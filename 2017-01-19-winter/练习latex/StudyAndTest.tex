@@ -1,0 +1,226 @@
+\documentclass{article}
+\usepackage{xeCJK}
+\usepackage{ulem}         		%  波浪线 和 叉叉
+\usepackage{setspace}  		% 设置行间距
+\usepackage{paralist} 			% 压缩列表
+\usepackage{amsmath}		% 数学
+\usepackage{fancyvrb}
+\author{丁尧尧}
+\date{\today}
+\title{学习\LaTeX 的基本命令}
+\begin{document}
+	\maketitle
+	\begin{abstract}
+		这里是用来练习\LaTeX 命令的一个文档。用于备忘和查阅。
+	\end{abstract}
+	\setcounter{tocdepth}{2}	
+	\tableofcontents
+	\part{基本部分}
+	第一部分的介绍
+		\section{文字}
+		主要是文本模式（区别于数学模式）下的文本格式。
+			\subsection{字符的输入}
+			需要转义的普通字符			\\ 			
+			\# 			\\ 
+			\$  		\\ 
+			\^ 			\\ 
+			\& 			\\ 
+			\_ 			\\ 
+			\{ 			\\ 
+			\} 			\\ 
+			\~ 			\\
+			\textbackslash			\\
+			\%			\\
+			不同的横线个数表达含义不同，分别是英文连字符、数字连字符、扩折号。 \\
+			-			\\
+			--			\\
+			---			\\
+			特殊字符：			\\
+			\textcopyright			\\
+			\textregistered			\\
+			\today			\\
+			\={A}			\\
+			\~{A}			\\
+			\^{A}
+			\subsection{字体样式和大小}
+			\textbf{Blod}			\\
+			\textit{Italic}			\\
+			\textrm{Roman}			\\
+			\textsf{Sans serif}			\\
+			\texttt{Monospace}			\\
+			\tiny tiny \\
+			\scriptsize scriptsize \\
+			\footnotesize footnotesize \\
+			\small small \\
+			\normalsize normalsize \\
+			\large large \\
+			\Large Large \\
+			\LARGE LARGE \\
+			\huge huge \\
+			\Huge Huge \\
+			\normalsize  
+			\emph{emphasis}  \\
+			\underline{underline}	\\
+			\uwave{uwave} \\
+			\sout{sout}  \\
+			\textbackslash newline {} 或 {} \textbackslash \textbackslash 换行			\\
+			\textbackslash newpage {}换页 \\
+		\section{段落相关}
+			\subsection{段落对齐}
+			\begin{flushleft}
+				这是左对齐  \\
+				再来一行看看
+			\end{flushleft}
+			\begin{flushright}
+				这是右对齐  \\
+				再来一行看看
+			\end{flushright}
+			\begin{center}
+				居中对齐				\\
+				再来一行看看
+			\end{center}
+			\subsection{行间距}
+			\begin{spacing}{2.0}
+			第一行\\第二行\\第三行\\
+			\end{spacing}
+			\subsection{引用}
+			\begin{quote} 
+			    引用 \\两端都缩进
+		    \end{quote}
+		    \begin{quotation}
+		    	引用 \\ 和上面差不多，但多了首行缩进
+		    \end{quotation}
+		    \subsection{原文打印}
+		    \verb|printf( "hello, world!\n );|
+		    \begin{verbatim}
+				#include <cstdio>
+				    int main() {
+				    printf( "hello,world!\n );
+				    return 0;
+				}
+		    \end{verbatim}
+		    \begin{verbatim*}
+   				#include <cstdio>
+	   			    int main() {
+	   			    printf( "hello,world!\n );
+	   			    return 0;
+   				}
+		    \end{verbatim*}
+		    \label{CODE}
+			\subsection{脚注}
+			这是一段话，哈哈哈哈哈\footnote{此处的哈用于表达高兴}
+		\section{列表}
+			\subsection{基本列表}
+			下面是三种基本列表
+			\begin{itemize}
+				\item C++
+				\item Java
+				\item HTML
+			\end{itemize}
+			\begin{enumerate}
+				\item C++
+				\item Java
+				\item HTML
+			\end{enumerate}
+			\begin{description}
+				\item[C++] 编程语言
+				\item[Java] 编程语言
+				\item[HTML] 标记语言
+			\end{description}
+			还可以改变前面的符号
+			\renewcommand{\labelitemi}{-}
+			\renewcommand{\theenumi}{\alph{enumi}}
+			\begin{itemize}
+				\item C++
+				\item Java
+				\item HTML
+			\end{itemize}
+			\begin{enumerate}
+				\item C++
+				\item Java
+				\item HTML
+			\end{enumerate}
+		\section{交叉引用}
+		代码在\pageref{CODE}页\ref{CODE}节
+	\part{数学}
+	数学相关
+		\section{数学模式}
+		插入公式可以在一行中直接插入，比如$F=ma$，也可以单独起一行，无标号的：
+		\[ F=ma \]
+		有标号的：
+		\begin{equation}
+			F=ma
+		\end{equation}
+		有的时候强调某一部分，可以给它加个方框：
+		\[  F=m\boxed{a} \]
+		\section{基本元素}
+		英文字母可以直接输入，拉丁文有对应的符号：\\
+		\[
+		\alpha\;\beta\;\gamma\;\delta\;\epsilon\;\theta\;\lambda\;\mu\;
+		\mu\;\eta\;\xi\;\pi\;\rho\;\sigma\;\varphi\;\Gamma\;\Delta\;\Theta\;
+		\Lambda\;\Xi\;\Pi\;\Sigma\;
+		\]
+		上下标：
+		\[
+		x_{i,j}^{2} \quad \sqrt{x} \quad \sqrt[n]{x}
+		\]
+		分数：
+		\[
+		\frac{a^3}{\sqrt{b}}
+		\]
+		小运算符：
+		\[
+		+ \; - \; * \; / \; = \; \pm \; \times \; \div\;  \cdot\; \cap\; \cup\; \geq\;  \leq\; \neq\;
+		\approx\; \equiv\;
+		\]
+		大运算符： \\
+		$\sum\limits_{i=1}^{n} i \quad \lim\limits_{x\to 0} x^2 \quad \int \prod $
+		\[
+		\int_{a}^{b}\frac{1}{x}dx = ln(b) - ln(a)
+		\]
+		箭头：\\
+		\[
+		\leftarrow\;\rightarrow\;\leftrightarrow\;\Leftarrow\;\Rightarrow\;\Leftrightarrow\;
+		\longleftarrow\;\longrightarrow\;\longleftrightarrow\;\Longleftarrow\;\Longrightarrow\;\Longleftrightarrow\;
+		\xleftarrow{x+y+z=r}
+		\]
+		标注：\\
+		\[
+		\bar{x} \; \vec{x} \; \hat{x} \; \check{x}\;
+		\]
+		各种括号：\\
+		\[ 	\Bigg ( \bigg ( \Big ( \big ( (x) \big ) \Big ) \bigg ) \Bigg )  \]  
+		\[ [x]  \]
+ 		\[ \langle x\rangle \]
+		\[ \lvert x \rvert \]
+		\[ \lVert x \rVert \]
+		省略号：\\
+		\[
+			x_1, x_2, \dots , x_n \quad 1 , 2, \cdots , n \quad \vdots \quad \ddots 
+		\]
+		间距：\\
+		\[
+		(\!) \quad (\,) \quad (\:) \quad (\;) \quad (\quad) \quad (\qquad) 
+		\]
+		\section{矩阵}
+		矩阵：\\
+		\[
+		\begin{array}{cccc}
+			x_{1,1} & x_{1,2} & \cdots & x_{1,n} \\
+			x_{2,1} & x_{2,2} & \cdots & x_{2,n} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			x_{n,1} & x_{n,2} & \cdots & x_{n,n} \\
+		\end{array} \quad
+		\begin{pmatrix} a & b \\ c & d \end{pmatrix} \quad
+		\begin{bmatrix} a & b \\ c & d \end{bmatrix} \quad
+		\begin{Bmatrix} a & b \\ c & d \end{Bmatrix} \quad
+		\begin{vmatrix} a & b \\ c & d \end{vmatrix} \quad
+		\begin{Vmatrix} a & b \\ c & d \end{Vmatrix} 
+		\]
+		行间矩阵$( \begin{smallmatrix}
+			a & b \\ c & d
+		\end{smallmatrix} )$
+		\section{多行公式}
+		\section{定理和证明}
+		\section{数学字体}		
+\end{document}

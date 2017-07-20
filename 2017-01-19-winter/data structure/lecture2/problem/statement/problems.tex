@@ -1,0 +1,169 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Winter Training - Data Structure 2 \\
+idy002, \today
+}    
+
+\begin{document}
+	
+\begin{problem}{distance}{distance.in}{distance.out}{1 second} 
+
+	小庆住在一个很特别的国度里，它有$N$个城市，并且只建了$N-1$条双向路，但神奇的是任意两个城市都可以通过这些路连接起来。小庆最近在研究寒假的旅游计划，有时她想快速地知道两个城市之间的距离，于是找你来帮帮解决。
+    \InputFile
+	第$1$行一个整数$N$。	
+	
+	接下来$N-1$行，每行三个整数$u, v, w$，表示城市$u$和城市$v$之间有一条长为$w$的路。
+	
+	接下来$1$行，包含一个整数$Q$，表示小庆有$Q$个询问。
+	
+	接下来$Q$行，每行两个整数$u,v$，表示小庆想知道$u$和$v$这两个城市之间的距离。
+	
+    \OutputFile
+
+	对于小庆的每个询问，输出两个城市之间的距离。
+	
+    \Example
+
+    \begin{example}
+        \exmp{
+			4
+			1 2 3
+			1 3 4
+			2 4 2
+			3
+			1 1
+			1 4
+			2 3
+        }{
+			0
+			5
+			7
+        }
+    \end{example}
+
+    \Note
+    
+    \begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq N, Q \leq 10^3$
+		\item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$, $1 \leq w \leq 10^3$, $1 \leq u, v \leq N$ 
+    \end{itemize}
+
+\end{problem}
+
+\begin{problem}{redpacket}{redpacket.in}{redpacket.out}{1 second} 
+    
+    （承上题）小漫是小庆那个国家的国王，她住在$1$号城市，$u$号城市如果到$1$必定经过$v$号城市，我们则称$v$号城市管辖$u$号城市（$v$号城市也管辖自己）。过年了，小漫想给国家的一些城市发红包，每次她会给$u$号城市管辖的每个城市发放$w$的红包，有时，她也想知道某个城市或被某个城市管辖的城市一共得了多少红包。如下：
+    \begin{itemize}
+    	\item \texttt{give u w} ：表示将$u$号城市管辖的每个城市发$w$的红包。
+    	\item \texttt{single u} ：表示询问$u$号城市得了多少红包。
+    	\item \texttt{all u} ：表示询问$u$号城市管辖的城市一共得了多少红包。
+    \end{itemize}
+    
+    \InputFile
+
+	第$1$行一个整数$N$。	
+	
+	接下来$N-1$行，每行三个整数$u, v$，表示城市$u$和城市$v$之间有一条路。
+	
+	接下来$1$行，包含一个整数$Q$，表示小漫有$Q$个操作。
+	
+	接下来$Q$行，每行是上面三种操作的一种。
+
+    \OutputFile
+
+    对每个询问，输出其答案。
+
+    \Example
+
+    \begin{example}
+        \exmp{
+            5
+            1 2
+            1 3
+            2 4
+            2 5
+            3
+            give 1 5
+            single 2
+            all 2
+        }{
+            5
+            15
+        }%
+    \end{example}
+
+    \Note
+    
+    \begin{itemize}
+    	\item 对于$30\%$的数据，$1 \leq N, Q \leq 10^3$
+        \item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$, $1 \leq u \leq N$, $1 \leq w \leq 10^5$
+    \end{itemize}
+
+\end{problem}
+
+\begin{problem}{redpacket2}{redpacket2.in}{redpacket2.out}{1 sequence}
+
+    （承上题）小漫觉得那样发红包有些无聊，于是决定每次给$u$号城市到$v$号城市简单路径经过的城市发红包（当然包括$u$和$v$本身），考虑到你们还太年轻，就只问你们单个城市的红包了：
+    \begin{itemize}
+    	\item \texttt{give u v w} ：给$u$到$v$的简单路径上的城市$w$的红包
+    	\item \texttt{single u} ：询问到目前为止$u$号城市得到的红包
+    \end{itemize}
+
+    \InputFile
+	
+		第$1$行一个整数$N$。
+		
+		接下来$N-1$行，每行三个整数$u, v$，表示城市$u$和城市$v$之间有一条路。
+		
+		接下来$1$行，包含一个整数$Q$，表示小漫有$Q$个操作。
+		
+		接下来$Q$行，每行是上面两个操作中的一个。
+    
+    \OutputFile
+
+	对于每个询问，输出其答案。
+
+    \Example
+
+    \begin{example}
+        \exmp{
+             5
+             1 2
+             1 3
+             2 4
+             2 5
+             3
+             give 3 5 3
+             give 1 1 2
+             single 1 
+        }{
+            5
+        }%
+    \end{example}
+
+    \Note
+    \begin{itemize}
+        \item 对于$30\%$的数据，$1 \leq N,  Q \leq 10^3$
+        \item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$, $1 \leq w \leq 10^5$, $1 \leq u, v \leq N$
+    \end{itemize}
+
+\end{problem}
+
+
+\end{document}

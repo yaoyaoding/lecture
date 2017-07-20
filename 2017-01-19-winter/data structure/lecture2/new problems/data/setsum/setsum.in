@@ -1,0 +1,6 @@
+5
+3 2 5 1 4
+3
+query 2 3
+modify 2 3 3
+query 1 3
