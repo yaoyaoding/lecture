@@ -1,0 +1,157 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Winter Training - Data Structure 1 \\
+idy002, \today
+}    
+
+\begin{document}
+
+\begin{problem}{matsum}{matsum.in}{matsum.out}{1 second} 
+
+    给出$N \times M$的一个矩阵，初始时全部元素为$0$，有两种操作：
+    \begin{itemize}
+    	\item \texttt{modify x y d}：将位置\texttt{(x,y)}的值加上\texttt{d}。
+    	\item \texttt{query x1 y1 x2 y2}： 询问\texttt{(x1,y1)-(x2,y2)}这个矩形的和。
+    	\footnote{\texttt{(x1,y1)-(x2,y2)}表示以\texttt{(x1,y1)}为左上角，\texttt{(x2,y2)}为右下角的矩形}
+    \end{itemize}
+
+    \InputFile
+
+    第$1$行，$3$个整数$N, M, Q$，分别表示矩阵的行数、列数及询问数。
+    
+    接下来$Q$行，每行是上面两种操作之一。
+
+    \OutputFile
+
+    对于每个询问，输出询问结果。
+
+    \Example
+
+    \begin{example}
+        \exmp{
+            2 2 4
+            modify 1 1 4 
+            query 1 1 2 2
+            modify 2 2 -4
+            query 1 1 2 2 
+        }{
+            4
+            0
+        }%
+    \end{example}
+
+    \Note
+    
+    \begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq N, M, Q \leq 500$；
+        \item 对于另外$30\%$的数据，$N = 1, 1 \leq M, Q \leq 10^5$；
+        \item 对于另外$40\%$的数据，$1 \leq N, M \leq 10^3, \; $ $1 \leq Q \leq 10^5,\; $
+        \item 对于所有数据，$ |d| \leq 100, \; $ $1 \leq x \leq N,\; $ $1 \leq y \leq M,\;$ $ 1 \leq x1 \leq x2 \leq N,\;$ 
+		        $ 1 \leq y1 \leq y2 \leq M\;$；
+    \end{itemize}
+
+\end{problem}
+
+\begin{problem}{segsum}{segsum.in}{segsum.out}{1 second} 
+    
+    给出一个长度为$N$的序列，支持一下两种操作：
+    \begin{itemize}
+    	\item \texttt{modify l r d}：将区间$[l,r]$的每个数加上$d$。
+    	\item \texttt{query l r}：询问区间$[l,r]$的最大值，最小值，和。
+    \end{itemize}
+
+    \InputFile
+
+    第$1$行，$2$个整数$N, Q$，表示序列长度和询问数。
+
+	接下来$1$行，包含$N$个数，表示初始序列。
+    接下来$Q$行，每行是两种操作之一。
+
+    \OutputFile
+
+    对每个询问，输出其答案。
+
+    \Example
+
+    \begin{example}
+        \exmp{
+            4 3 
+            1 2 3 4
+            query 1 3
+            modify 3 -3
+            query 1 4
+        }{
+            6
+            7
+        }%
+    \end{example}
+
+    \Note
+    
+    \begin{itemize}
+    	\item 对于$30\%$的数据，$1 \leq N, Q \leq 10^3$；
+        \item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$。
+    \end{itemize}
+
+\end{problem}
+
+\begin{problem}{matgcd}{maxgcd.in}{matgcd.out}{1 sequence}
+
+    给出一个$N \times M$的正整数矩阵，再给出$Q$个询问：
+    \begin{itemize}
+    	\item \texttt{query x1 y1 x2 y2}：询问\texttt{(x1,y1)-(x2,y2)}这个子矩形的最大公约数。
+    \end{itemize}
+
+    \InputFile
+
+    第$1$行，$2$个整数$N, M$，表示矩阵的行数和列数。
+
+    接下来$N$行，每行$M$个正整数。
+
+    \OutputFile
+
+    \Example
+
+    \begin{example}
+        \exmp{
+            3 3 3
+            3 6
+            4 2
+            query 1 1 2 2
+            query 1 1 1 2
+            query 1 2 2 2  
+        }{
+            1
+            3
+            2
+        }%
+    \end{example}
+
+    \Note
+    \begin{itemize}
+        \item 对于$30\%$的数据，$1 \leq N, M, Q \leq 500$；
+        \item 对于另外$30\%$的数据，$N = 1, \; 1 \leq M \leq 500, \; 1 \leq Q \leq 10^5$；
+        \item 对于另外$40\%$的数据，$1 \leq N, M \leq 500, \; 1 \leq Q \leq 10^5$；
+        \item 对于$100\%$的数据，$1 \leq x1 \leq x2 \leq N, \; 1 \leq y1 \leq y2 \leq M$。
+    \end{itemize}
+
+\end{problem}
+
+
+\end{document}

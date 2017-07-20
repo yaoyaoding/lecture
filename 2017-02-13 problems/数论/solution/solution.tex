@@ -1,0 +1,160 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{xeCJK}
+
+\begin{document}
+	\section{equation}
+		\subsection{30\%数据}
+			暴力，这时答案本身很小，所以只需要写一个dfs。
+		\subsection{70\%数据}
+			这个问题等价于“将$m$个相同的球放进$n$个不同的盒子中”的方案数，所以：
+			
+			$$
+				ans \; = \; \binom{n+m-1}{m}
+			$$
+			
+			（记得课上讲的夹棍法吗？）
+			
+			后者可以用递推公式算：
+			$$
+				\binom{n}{m} = \binom{n-1}{m-1} + \binom{n-1}{m}
+			$$
+			
+			也可以暴力乘＋逆元。
+			$$
+				\binom{n}{m} = \frac{n!}{m!(n-m)!}
+			$$
+			
+			复杂度后者好点（因为模数不同，前者每次都要推一遍）
+		\subsection{余下30\%数据}
+			
+			用公式推应该会超时，只能用后面那个，求逆元可以用扩展欧几里得，也可以欧拉定理（注意题目中$\varphi(pq) = (p-1)(q-1)$）。当然也可以在在模$p$和模$q$时答案求出来，再用中国剩余定理合并。
+			
+		\newpage
+		
+	\section{power}
+		
+		\subsection{10\%数据}
+			暴力循环
+			
+		\subsection{30\%数据}
+			普通二进制快速幂
+			
+		\subsection{70\%数据}
+			高精度　＋　二进制快速幂
+			
+		\subsection{100\%数据}
+			十进制快速幂，类比二进制，从低到高维护好$3^{10^{i}}$。
+		
+		\newpage
+		
+	\section{comb}
+		\subsection{30\%数据}
+			暴力算出组合数，用递推公式
+			
+		\subsection{100\%数据}
+			题目就是求：
+			$$
+				p \mid \binom{n}{i}
+			$$
+			即：
+			$$
+				\binom{n}{i} \equiv 0 \; ( mod \; p )
+			$$
+			的$i$的个数。想到可能和Lucas有关，我们先把问题转化成求：
+			$$
+				p \nmid \binom{n}{i}
+			$$
+			的$i$的个数。
+			由Lucas定理：
+			$$
+				\binom{n}{m} \equiv \binom{n_1}{m_1}\binom{n_2}{m_2}\cdots\binom{n_s}{m_s}  \; ( mod \; p )
+			$$
+			其中$n_1n_2\dots n_s$和$m_1m_2\dots m_s$是$n$和$m$的$p$进制分解。
+			容易发现：只要右边每一项模意义下都非$0$，那么右边乘起来都非零，这样的数$m$有：
+			$$
+				(n_1+1)(n_2+1)\cdots(n_s+1)
+			$$
+			个，这就是不满足条件的数的个数，那么答案就是：
+			$$
+				(n + 1) - (n_1+1)(n_2+1)\dots(n_s+1)
+			$$
+			\newpage
+	\section{derange}
+		\subsection{30\%数据}
+			用\verb|next_permutation|枚举排列，然后暴力check。
+		
+		\subsection{70\%数据}
+			
+			我们用$D[n]$表示$n$个元素的错排数量，那么我们可以通过枚举不合法的排列重合的个数来算出$D[n]$：
+			$$
+				D[n] = n! - \sum_{i = 1}^{n} \binom{n}{i}D[n-i]
+			$$
+			初始值是：
+			$$
+				D[0] = 1
+			$$
+			我们可以先处理出组合数，再跑这个递推，就行了。
+			
+		\subsection{100\%数据}
+			$D[n]$中，我们先选择$n$号元素的位置，有$n-1$种选择($[1,n-1$]) ，假设$n$放在了$i$号位置，我们再考虑$i$号元素放哪，此时分两种情况：
+			\begin{itemize}
+				\item $i$放在$n$号位置，此时有$D[n-2]$种放法。
+				\item $i$号元素不放在$n$号位置，问题就转化成了：我要将$[1,n-1]$这$n-1$个元素放进$[1,i-1], [i+1,n]$这些位置，并且每个元素都有且仅有一个位置不能放（$1$不能放在$1$，$2$不能放在$2$，\dots $i$不能放在$n$ \dots ）。这不就是$n-1$个元素的错排吗？（将$n$号位置看成$i$号元素本来的位置）。此时有$D[n-1]$种放法。
+			\end{itemize}
+		\newpage
+	\section{mulfunc}
+		我们先证明一下题目中给出的结论吧：
+		$$
+			g(n) = \sum_{d \mid n}f(d)
+		$$
+		假设$n$有质因分解：$n = p_1^{\alpha_1}p_2^{\alpha_2}\dots p_s^{\alpha_s}$。从而：
+		$$
+			g(p_1^{\alpha_1}p_2^{\alpha_2}\dots p_s^{\alpha_s}) = \sum_{d \mid p_1^{\alpha_1}p_2^{\alpha_2}\dots p_s^{\alpha_s}}f(d) = \sum_{i_1 = 0}^{\alpha_1}\sum_{i_1 = 0}^{\alpha_1}\cdots\sum_{i_s = 0}^{\alpha_s}f(p_1^{i_1}p_2^{i_2}\dots p_s^{i_s}) 
+		$$
+		因为$f(n)$是积性函数，我们可以继续：
+		$$
+			= \sum_{i_1 = 0}^{\alpha_1}\sum_{i_1 = 0}^{\alpha_1}\cdots\sum_{i_s = 0}^{\alpha_s}f(p_1^{i_1})f(p_2^{i_2})\dots f(p_s^{i_s}) 
+		$$
+		由求和的性质，又有：
+		$$
+			= \sum_{i_1 = 0}^{\alpha_1}f(p_1^{i_1})\sum_{i_1 = 0}^{\alpha_1}f(p_2^{i_2})\cdots\sum_{i_s = 0}^{\alpha_s}f(p_s^{i_s}) =  (\sum_{i_1 = 0}^{\alpha_1}f(p_1^{i_1}))(\sum_{i_1 = 0}^{\alpha_1}f(p_2^{i_2}))\cdots(\sum_{i_s = 0}^{\alpha_s}f(p_s^{i_s}))
+		$$
+		$$
+			= g( p_1^{\alpha_1})g(p_2^{\alpha_2})\dots　g(p_s^{\alpha_s})
+		$$
+		从而有：
+		$$
+		g(p_1^{\alpha_1}p_2^{\alpha_2}\dots p_s^{\alpha_s}) = g( p_1^{\alpha_1})g(p_2^{\alpha_2})\dots　g(p_s^{\alpha_s})
+		$$
+		就证明了$g(n)$的积性。
+		
+		所以，关于$\tau(n)$和$\sigma(n)$又有下面的定义：
+		$$
+			\begin{array}{rcl}
+				\tau(n) &=& \sum_{d \mid n}1	\\
+				\sigma(n) &=& \sum_{d \mid n}d
+			\end{array} 
+		$$
+
+		显然$f(n)=1$和$g(n)=n$都是积性函数，所以$\tau(n)$和$\sigma(n)$是积性函数。
+		
+		由上面的结论，我们想要求一个积性函数的值，只需要弄清楚$f(p^\alpha)$的值就行了。
+		
+		$$
+			\begin{array}{ccl}
+				\tau(p^\alpha) &=&\alpha + 1	\\
+				\sigma(p^\alpha)  &=& 1 + p + p^2 + \cdots + p^\alpha = \frac{p^{\alpha+1}-1}{(p-1)}	\\
+				\mu(p) &=& -1	\\
+				\mu(p^\alpha) &=& 0 \quad ( \alpha \geq 2 )\\
+				\phi(p^\alpha) &=& p^\alpha - p^{\alpha - 1}\\
+			\end{array}
+		$$
+		因为我们线性筛的时候会找到每个数的最小素因子，所以可以在线性筛是算出所有数的函数值，具体参见代码。
+		
+	
+\end{document}

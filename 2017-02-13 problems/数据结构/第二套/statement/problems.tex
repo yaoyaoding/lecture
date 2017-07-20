@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Data Structure Special Training 2\\
+idy002, \today
+}    
+
+\begin{document}
+\begin{problem}{setmod}{setmod.in}{setmod.out}{2 seconds}{256}
+		
+	给你一个序列：$a_1 \; a_2 \; a_3 \dots  a_n $，有$m$个操作，操作如下：
+	
+	\begin{itemize}
+		\item \texttt{modify l r x}　将区间$[l,r]$中的每个数修改为$x$
+		\item \texttt{change l r x} 将区间$[l,r]$中的每个数加上$x$
+		\item \texttt{query l r } 询问区间$[l,r]$中的和
+	\end{itemize}
+	
+	\InputFile
+	
+	第$1$行$2$个整数：$n \; m$，表示序列长的和操作数．
+
+	第$2$行$n$个整数：$a_1 \; a_2 \; a_3 \dots a_n$，表示初始序列．
+	
+	接下来$m$行，每行是上面三种操作中的一种．
+	
+	\OutputFile
+	
+	对于每个询问操作，输出其结果．
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			3 3
+			1 2 3
+			change 1 3 2
+			modify 3 3 3
+			query 1 3
+		}{
+			10
+		}%
+	\end{example}
+	
+	\Note
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n, m \leq 10^3$
+		\item 对于$100\%$的数据，$1 \leq n, m \leq 10^5$，$1 \leq a_i, x \leq n$，$1 \leq l \leq r \leq n$
+	\end{itemize}
+	
+\end{problem}
+	\begin{problem}{area}{area.in}{area.out}{2 seconds}{256}
+		
+	给出$n$个矩形，求它们的面积并．
+	
+	更准确一点，每个矩形将给出它的左上角和右下角的位置：$x_1, y_1, x_2, y_2$
+	
+	这四个数都是整数且满足$x_1 \leq x_2, y_1 \leq y_2$．
+	
+	我们需要你求：
+	
+	$$area = \mid \{ (x,y) \in Z\times Z \mid \exists \; a \; rect. \; s.t. \; x_1 \leq x \leq x_2 \; and \; y_1 \leq y \leq y_2  \} \mid $$
+		
+	\InputFile
+	
+	第$1$行$1$个整数：$n$，表示矩形的个数。
+	
+	接下来$n$行，每行$4$个整数：$ x_1\; y_1 \; x_2 \; y_2 $，表示一个矩形的左上角和右下角的坐标。
+	
+	\OutputFile
+	
+	输出$area$。
+	
+	\Example
+		
+	\begin{example}
+		\exmp{
+			3
+			1 1 2 3
+			1 2 3 3
+			3 3 4 4
+		}{
+			11
+		}%
+	\end{example}
+	
+	样例解释：一共有$11$个点落在了上面三个矩形所表示的区域内：
+	
+	$(1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,2), (3,3), (3,4), (4,3), (4,4)$
+	
+	\Note
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n \leq 100$， $1 \leq x_1 \leq x_2 \leq 100$， $1 \leq y_1 \leq y_2 \leq 100$
+		\item 对于$100\%$的数据，$1 \leq n \leq 10^5$， $1 \leq x_1 \leq x_2 \leq 10^5$， $ 1 \leq y_1 \leq y_2 \leq 10^5$
+	\end{itemize}
+	
+\end{problem}
+
+\begin{problem}{intkth}{intkth.in}{intkth.out}{3 seconds}{512}
+	
+	我看好你哟。
+	
+	给你一个长度为$n$的序列，有$m$个操作：
+	
+	\begin{itemize}
+		\item \texttt{modify u x} 将第$u$个数修改为$x$
+		\item \texttt{query l r k} 询问区间$[l,r]$中第$k$小的数\footnote{第$k$小是指将区间$[l,r]$从小到大排序后，第$k$个数}
+	\end{itemize}
+	
+	\InputFile
+
+	第$1$行$2$个整数：$n \; m$，表示序列长度和操作数。
+	
+	第$2$行$n$个整数：$a_1 \; a_2 \; a_3 \; \dots \; a_n$，表示给定序列。
+	
+	接下来$m$行，每行表示上面的某个操作。
+
+	\OutputFile
+	
+	对于每个询问操作，输出其结果。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			5 5
+			5 2 1 3 4 
+			query 1 4 3
+			modify 4 5
+			query 1 4 3
+			modify 1 3
+			query 1 4 3
+		}{
+			3
+			5
+			3
+		}%
+	\end{example}
+
+	\Note
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n， m \leq 10^3$
+		\item 对于$100\%$的数据，$1 \leq n， m \leq 10^5$，$1 \leq a_i， u， x \leq n$， $ 1 \leq k \leq r - l + 1$， $1 \leq l \leq r \leq n$ 
+	\end{itemize}
+
+\end{problem}
+
+\end{document}

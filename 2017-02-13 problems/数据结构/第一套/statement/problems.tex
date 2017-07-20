@@ -1,0 +1,193 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Data Structure Special Training 1\\
+idy002, \today
+}    
+
+\begin{document}
+	
+\begin{problem}{rotinv}{rotinv.in}{rotinv.out}{2 seconds}{256}
+	
+	如果你有一个长度为$n$的序列：
+	
+	$$a_1,a_2,a_3,\dots,a_n$$
+	
+	那么它的一个逆序对是一个二元组：$<i,j>$满足$i<j$且$a_i > a_j$，其中$i, j \in [1,n]$。
+	
+	我们称一个序列所包含的逆序对的个数为这个序列的逆序对数。
+	
+	那么问题来了：
+	
+	我给出一个长度为$n$的序列，需要你计算：
+	$$
+		\begin{array}{c c c c c}
+			a_1,&a_2&\dots&a_{n-1},&a_n	\\
+			a_2,& a_3& \dots& a_{n},   & a_1	\\
+			a_3,& a_4& \dots& a_1,       & a_2	\\
+			& & \cdots 	& & \\
+			a_n,& a_1& \dots& a_{n-2},& a_{n-1}	\\
+		\end{array}
+	$$
+	
+	这$n$个序列的逆序对之和。
+
+	\InputFile
+	输入文件包含$2$行：
+	
+	第$1$行$1$个整数：$n$，表示给定序列的长度。
+	
+	第$2$行$n$个整数：$a_1 \; a_2 \; \dots a_n $，表示初始序列。
+	
+	\OutputFile
+	
+	输出$n$个序列的逆序对的和。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			3
+			2 2 3
+		}{
+			6
+	}%
+	\end{example}
+	
+	以上样例中，$3$个序列分别是：$2 \; 2 \; 3 $，$2 \; 3 \; 2 $，$3 \; 2 \; 2 $，分别有$0$，$1$，$2$个逆序对，所以和为$6$。
+	
+	\begin{example}
+		\exmp{
+			3
+			1 1 1
+		}{
+			0
+		}%
+	\end{example}
+	
+	以上样例中，$3$个序列都是：$ 1 \; 1 \; 1 $，逆序对数为$0$，所以答案为$0$。
+	
+	\Note
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n \leq 300$
+		\item 对于$60\%$的数据，$1 \leq n \leq 5000$
+		\item 对于$100\%$的数据，$1 \leq n \leq 10^6$，$ 1 \leq a_i \leq n$
+	\end{itemize}
+
+\end{problem}
+
+\begin{problem}{rise}{rise.in}{rise.out}{2 seconds}{256}
+	
+	你有一堆柱子，它们竖直地并排摆放在桌子上，它们的高度分别是：
+	
+	$$
+		h_1, h_2, h_3, \dots, h_n
+	$$
+	
+	你从前往后看，能够看见的柱子个数为这个柱子序列的“可见度”（能够看见柱子$i$当且仅当$h_j < h_i \; \forall   j < i$）。
+	
+	现在给你一个长度为$n$的序列，还有$m$个询问，每次询问某个区间$[l,r]$的柱子单独拿出来后，其可见度是多大。
+	
+	\InputFile
+	
+	第$1$行$2$个整数：$n \; m$，表示给出的柱子序列的长度和询问数。
+	
+	第$2$行$n$个整数：$a_1 \; a_2 \; a_3 \; \dots \; a_n$，表示每根柱子对应的高度。
+	
+	接下来$m$行，每行$2$个整数：$l \; r$，表示对区间$[l,r]$进行询问。
+	
+	\OutputFile
+
+	对于每个询问，输出答案。
+
+	\Example
+	
+	\begin{example}
+		\exmp{
+			5 4
+			1 3 2 4 2
+			1 4
+			2 4
+			1 3
+			2 3
+		}{
+			3
+			2
+			2
+			1
+		}%
+\end{example}
+
+	样例中“能够看见”的柱子的高度分别是：$1 \; 3 \; 4$，$　3 \; 4$，$1 \; 3 $，$ 3 $
+	
+\Note
+	\begin{itemize}
+		\item 对于$30\%$的数据，$ 1 \leq n, m \leq 10^3 $
+		\item 对于$100\%$的数据，$ 1 \leq n, m \leq 10^5 $，$1 \leq a_i \leq n$，$ 1 \leq l \leq r \leq n $
+	\end{itemize}
+	
+\end{problem}
+
+\begin{problem}{seqmod}{seqmod.in}{seqmod.out}{2 seconds}{256}
+	
+	给你一棵无根树，边有边权，且是$[0,9]$之间的整数，给你$m$个询问，每次询问两个点$u, v$之间的路径的边的边权顺次连接起来后构成的那个数字取模于$31$。
+
+	\InputFile
+	
+	第$1$行$2$个整数：$n \; m$，表示树的节点个数和询问数。
+	
+	接下来$n-1$行，每行$3$个数：$u \; v \; d$表示点$u$和点$v$之间有一条边权为$d$的边。
+	
+	接下来$m$行，每行$2$个整数：$u \; v$表示一个询问。
+	
+	\OutputFile
+	
+	对于每个询问输出其答案。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			5 3
+			1 2 2
+			1 3 8
+			3 4 9
+			3 5 2
+			1 4
+			2 5
+			5 2
+		}{
+			27
+			24
+			6
+		}%
+	\end{example}
+	
+	样例中三条路径对应的数字分别是：$89$，$582$，$285$，它们被$31$取模后为：$27$，$24$，$6$。
+
+\Note
+\begin{itemize}
+	\item 对于$30\%$的数据，$ 1 \leq n, m \leq 10^3 $
+	\item 对于$100\%$的数据，$ 1 \leq n, m \leq 10^5$，$ 1 \leq u, v \leq n $，$ u \neq v$，$ 0 \leq d \leq 9$
+\end{itemize}
+
+\end{problem}
+
+\end{document}

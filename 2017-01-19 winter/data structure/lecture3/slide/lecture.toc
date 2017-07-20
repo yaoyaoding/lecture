@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{可持久化结构}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{介绍}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{区间第K小问题}{4}{0}{1}
+\beamer@subsectionintoc {1}{3}{离散化}{5}{0}{1}
+\beamer@subsectionintoc {1}{4}{值域线段树}{8}{0}{1}
+\beamer@subsectionintoc {1}{5}{带修改？}{10}{0}{1}
+\beamer@sectionintoc {2}{平衡树}{11}{0}{2}

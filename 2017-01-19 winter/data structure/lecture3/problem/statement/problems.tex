@@ -1,0 +1,158 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Winter Training - Data Structure 3 \\
+idy002, \today
+}    
+
+\begin{document}
+	
+\begin{problem}{area}{area.in}{area.out}{1 second}
+	
+	这里是一个格子的世界，我们给出$N$个矩形，要你求他们的面积并。
+	
+	\InputFile
+	
+	第$1$行，一个整数$N$。
+	接下来$N$行，每行四个整数：$x1,y1,x2,y2$表示矩形$(x_1,y_1)-(x_2,y_2)$。\footnote{这里是离散的情况，意思是当$x_1$与$x_2$相同时，认为有高度还是$1$，可以参考样例}
+	
+	\OutputFile
+	
+	输出面积并。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			2
+			1 1 2 2
+			2 2 3 3
+		}{
+		7
+	}%
+\end{example}
+
+\Note
+\begin{itemize}
+	\item 对于$30\%$的数据，$1 \leq x_1 \leq x_2 \leq 10^3$， $1 \leq y_1 \leq y_2 \leq 10^3$
+	\item 对于$100\%$的数据，$1 \leq x_1 \leq x_2 \leq 10^9$，$1 \leq y_1 \leq y_2 \leq 10^9$，$1 \leq N \leq 10^3$
+\end{itemize}
+\end{problem}
+
+\begin{problem}{array}{array.in}{array.out}{1 second} 
+	
+	给出一个长度为$N$的数组，每次有三种操作：
+	
+	\begin{enumerate}
+		\item \texttt{modify i x}：把位置$i$的值赋值成$x$。
+		\item \texttt{query i}：询问第$i$个位置的值。
+		\item \texttt{back t}：把数组变成进行了第$t$个操作之后的版本。
+	\end{enumerate}
+	
+    \InputFile
+    
+    第$1$行，包含一个整数$N$。
+    
+    第$2$行，包含$N$个整数：$a_1,a_2,\dots,a_n$。
+    
+    第$3$行，包含一个整数$Q$，表示操作数目。
+    
+    接下来$Q$行，每行包含上述三个操作之一。
+    
+    \OutputFile
+
+	对于每个询问操作，输出其结果。
+
+    \Example
+
+    \begin{example}
+        \exmp{
+			4
+			1 2 3 4
+			5
+			query 2
+			modify 2 3
+			query 2
+			back 0
+			query 2
+        }{
+			2
+			3
+			2
+        }%
+    \end{example}
+
+   \Note
+    \begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq N, Q \leq 10^3$
+		\item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$，$0 \leq t \leq Q-1$，$1 \leq i \leq N$，$1 \leq x, a_i\leq N$
+    \end{itemize}
+
+\end{problem}
+
+\begin{problem}{kth}{kth.in}{kth.out}{4 second} 
+	
+	给你一个长度为$N$的序列，有$Q$个操作，每个是下面之一：
+	
+	\begin{enumerate}
+		\item \texttt{modify i x}：把第$i$个位置的值设成$x$。
+		\item \texttt{query l r k}：询问区间$[l,r]$中第$k$小的值。\footnote{这里的第$k$小是指将区间从小到大排序后第$k$个位置的数}
+	\end{enumerate}
+
+    \InputFile
+	
+	第$1$行，包含一个整数$N$。
+	
+	第$2$行，包含$N$个正整数：$a_1,a_2,\dots,a_n$。
+	
+	第$3$行，包含一个整数$Q$。
+	
+	接下来$Q$行，每行包含一种操作。
+
+    \OutputFile
+    
+    对于每个询问，输出其结果。
+
+    \Example
+
+    \begin{example}
+        \exmp{
+			4 
+			4 3 2 1
+			3
+			query 1 3 2
+			modify 2 4
+			query 1 3 2
+        }{
+			3
+			4
+        }%
+    \end{example}
+
+    \Note
+  
+    \begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq N, Q \leq 10^3$
+		\item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$，$1 \leq k \leq r - l + 1$，$1 \leq l \leq r \leq N$，$1 \leq i \leq N$
+    \end{itemize}
+
+\end{problem}
+
+
+
+\end{document}
