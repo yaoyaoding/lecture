@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{一些关于树的统计问题}{3}{0}{1}
+\beamer@sectionintoc {2}{DFS序}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{概念}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{应用}{9}{0}{2}
+\beamer@sectionintoc {3}{最近公共祖先}{9}{0}{3}
+\beamer@subsectionintoc {3}{1}{问题}{9}{0}{3}
+\beamer@subsectionintoc {3}{2}{朴素做法}{10}{0}{3}
+\beamer@subsectionintoc {3}{3}{倍增做法}{11}{0}{3}
+\beamer@subsectionintoc {3}{4}{RMQ做法}{12}{0}{3}
+\beamer@subsectionintoc {3}{5}{后两个问题}{13}{0}{3}

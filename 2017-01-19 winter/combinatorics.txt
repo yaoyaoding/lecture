@@ -1,0 +1,18 @@
+﻿\section{计数原理}
+\section{容斥原理}
+\section{鸽巢原理}
+\section{排列和组合}
+	\subsection{排列}
+	\subsection{组合}
+	\section{二项式定理}
+\section{特殊的排列与组合}
+    \subsection{可重排列}
+    \subsection{分组}
+\section{放物品进盒子}
+	\subsection{物品可区分，盒子可区分}
+	\subsection{物品不可区分，盒子可区分}
+	\subsection{物品可区分，盒子不可区分}
+	\subsection{物品不可区分，盒子不可区分}
+
+
+
