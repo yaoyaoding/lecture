@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{一元一次同余方程}{3}{0}{1}
+\beamer@sectionintoc {2}{二元一次不定方程}{9}{0}{2}
+\beamer@sectionintoc {3}{欧拉定理}{14}{0}{3}
+\beamer@sectionintoc {4}{逆元}{19}{0}{4}
+\beamer@sectionintoc {5}{中国剩余定理}{22}{0}{5}
+\beamer@sectionintoc {6}{Lucas定理}{31}{0}{6}
+\beamer@sectionintoc {7}{快速幂}{32}{0}{7}
+\beamer@sectionintoc {8}{容斥原理}{36}{0}{8}
+\beamer@sectionintoc {9}{卡特兰数}{37}{0}{9}
+\beamer@sectionintoc {10}{各种组合数求法}{39}{0}{10}

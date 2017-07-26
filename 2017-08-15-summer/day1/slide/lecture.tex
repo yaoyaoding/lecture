@@ -1,0 +1,257 @@
+\documentclass{beamer}
+\usepackage{xeCJK}
+\usepackage{listings}
+\usepackage{graphicx}
+\usetheme{Berkeley}
+\usefonttheme[onlymath]{serif}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+
+
+\title{数学第一讲}
+\subtitle{基础回顾}
+\author{丁尧尧}
+\institute{上海交通大学}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\begin{frame}{目录}
+		\tableofcontents
+	\end{frame}
+	
+	\section{一元一次同余方程}
+		\begin{frame}
+			考虑如何解形如
+			$$
+				ax \equiv b  \; (mod \; m)
+			$$
+			的同余式．\pause 分类讨论： \pause 
+			
+			\begin{enumerate}
+				\item $gcd(a,m) = 1$，此时在模$m$意义下存在$a$的逆元，直接左右两边同乘逆元即可解出同余方程． \pause 
+				\item $gcd(a,m) = d \neq 1$，此时还需要分类．\pause \\
+						\begin{enumerate}
+							\item $d \nmid b$，此时无解 \pause  
+							\item $d \mid b$，此时将$a, b, m$同时除以$d$，化成上面的情况
+						\end{enumerate}
+			\end{enumerate}
+		\end{frame}
+	\section{二元一次不定方程}
+		\begin{frame}
+			考虑如何解形如
+			$$
+				ax + by = c
+			$$
+			的不定方程．\pause 还是分类讨论（不妨设$gcd(a,b) = d$）：  
+			\pause
+			\begin{enumerate}
+				\item $d \nmid c$，无解 \pause 
+				\item $d \mid c$，用扩展欧几里得算出$x_0, y_0$满足$ax_0 + by_0 = d$，然后有$x = x_0 \frac{c}{d} + k\frac{b}{d}$，其中$k \in \mathbb{Z}$．\\
+													对于任何一个解$x$，直接可以用原式得出$y$的值．
+			\end{enumerate}
+			
+		  \pause  本质上二元一次不定方程和一元一次同余方程是一个东西．两个可以等价转化．
+		\end{frame}		
+		
+	\section{欧拉定理}
+		\begin{frame}
+			欧拉函数定义：
+			$$
+				\varphi(n) =  \mid \{  i \in [1,n] \mid gcd(i,n) = 1 \}   \mid
+			$$
+			即$[1,n]$中与$n$互质的数的个数（同时也是模$n$的缩系的大小）．
+			
+			\pause
+			
+			欧拉函数的一些性质：
+			\begin{itemize}
+				\item $\varphi(nm) = \varphi(n)\varphi(m)  \quad (gcd(m,n) = 1)$  积性函数
+				\item $\varphi(n) = n\prod_{p \mid n} (1 - \frac{1}{p}) $ 用于手算
+				\item $ n = \sum_{d \mid n}\varphi(d)$  
+			\end{itemize}
+
+		\end{frame}
+		
+		\begin{frame}
+			欧拉定理：
+			
+			$$
+				if \; gcd(a,n) = 1, then \; a^{\varphi(n)} \equiv 1 \; (mod \; n)
+			$$
+			
+			\pause
+			
+			这个定理一般用来求逆元或对指数取模．
+			
+			\pause
+			
+			欧拉定理还有个比较有用的扩展：
+			$$
+				if \; q \geq \varphi(n), then \; a^{q} \equiv a^{q \; mod\; \varphi(n) + \varphi(n)} \; (mod \; n)
+			$$
+			不需要$a$与$n$互质了．
+			
+		\end{frame}
+	\section{逆元}
+		\begin{frame}
+			在模$m$意义下，如果$gcd(a,m) = 1$，那么存在数$b$,使得:
+			$$
+				ab \equiv 1 (mod \; m)
+			$$
+			并且$b$在模意义下是唯一的.我们称$b$为$a$在模$m$的逆元,一般记作$a^{-1}$.
+			\pause
+			一般而言,求逆元有两种方式:
+			\begin{enumerate}
+				\item 由欧拉定理,在$gcd(a,m) = 1$时,有$a^{\varphi(m)-1} a \equiv 1 (mod \; m)$,于是$a^{\varphi(m)-1}$就是$a$的逆元.\pause
+				\item 在$gcd(a,m) = 1$时,可由扩展欧几里得求出$x_0,y_0$使得$ax_0+my_0=1$,于是$ax_0 \equiv 1 (mod \; m)$,所以$x_0$就是逆元.
+			\end{enumerate}
+		\end{frame}
+	\section{中国剩余定理}
+		\begin{frame}
+			对于同余方程组:
+			$$
+				x \equiv a_i \quad  ( mod \; m_i)
+			$$
+			其中$m_i$两两互素.
+			
+			设$M = \prod m_i$, $M_i = \frac{M}{m_i}$,$R_i = M_{i}^{-1}$(在模$m_i$的意义下)
+			于是可以得到下面的解:
+			$$
+			x \equiv \sum a_i M_i R_i \quad ( mod \; M )
+			$$
+		\end{frame}
+		\begin{frame}
+			上面只能处理$m_i$两两互素的情况,下面介绍一种不要求两两互素的方法.
+			
+			考虑两两合并.
+			
+			有下面两个方程:
+			$$
+				x \equiv a_1 \quad (mod \; m_1)
+			$$
+			$$
+				x \equiv a_2 \quad (mod \; m_2)
+			$$
+		\end{frame}
+		\begin{frame}
+			设
+			$$
+				x = a_1 + k_1m_1 = a_2 + k_2m_2
+			$$
+			右边是一个关于$k_1,k_2$的不定方程,只要我们找到一组解,那么就找到原方程的一个解.
+			$$
+				k_1m_1 - k_2m_2 = a_2 - a_1
+			$$
+			
+			\pause
+			
+			设$d = gcd(m_1,m_2)$,
+			\begin{enumerate}
+				\item $d \nmid a_2 - a_1$,原方程无解 \pause
+				\item $d \mid a_2 - a_1$,则由扩展欧几里得存在$k_{10},k_{20}$满足$k_{10}m_1 - k_{20}m_2 = d$,\\ \pause
+								于是:$k_1 = k_{10}  \frac{a_2 - a_1}{d} + t \frac{m_2}{gcd(m_1,m_2)}.$\\ \pause
+								于是:$x = a_1 + (k_{10}  \frac{a_2 - a_1}{d} + t \frac{m_2}{gcd(m_1,m_2)})m_1$ \\ \pause
+								$x = a_1 + k_{10}\frac{a_2-a_1}{d}m_1 + lcm(m_1,m_2)t$
+			\end{enumerate}
+		\end{frame}
+		\begin{frame}
+			上面的最后一个式子等价于:
+			$$
+				x \equiv a_1 + k_{10}\frac{a_2-a_1}{d}m_1 \quad (mod \;lcm(m_1,m_2))
+			$$
+			
+			\pause
+			
+			我们于是成功把两个式子合并成一个,这两两两合并下去就可以得到解了.
+		\end{frame}
+	\section{Lucas定理}
+		\begin{frame}
+			卢卡斯定理:
+			$$
+				\binom{n}{m} \equiv \binom{n/p}{m/p}\binom{n \; mod \; p}{m \; mod \; p} \quad (mod \; p)
+			$$
+			其中,如果出现$n \; mod \; p < m \; mod \; p$,则把对应的组合数看成$0$,表示原来的组合数是$p$的倍数.
+		\end{frame}
+	\section{快速幂}
+		\begin{frame}
+			如果要求:
+			$$
+				a^b 
+			$$
+			其中$b$是非负整数,$a$是满足加法结合律的数学对象(数或矩阵都是).
+			
+			\pause 
+			
+			可以将$b$看成一个二进制数,然后不断计算
+			$$
+				a^0, a^1, a^2,a^4,a^8,...
+			$$
+			如果发现$b$中有对应的项,就把它乘到答案里.
+		\end{frame}
+		\begin{frame}
+			用相同的思想,可以解决求:
+			$$
+				ab \; mod \; m
+			$$
+			的问题,其中$a, b, m$都是$10^{18}$级别.
+			
+			\pause
+			
+			思路就是把$b$拆分成二进制,然后依次计算:
+			$$
+			a,2a,4a,8a,...
+			$$
+			如果$b$中有对应项就加到答案里.因为只有加法,所以不会爆$long\;long$.
+		\end{frame}
+	\section{容斥原理}
+		\begin{frame}
+			容斥原理：
+			$$
+			\mid \bigcup_{i = 1}^{n} A_i\mid = \sum_{i} \mid  A_i \mid - \sum_{1 \leq i < j \leq n} \mid A_i \cap A_j \mid + \sum_{1 \leq i < j < k \leq n} \mid A_i \cap A_j \cap A_k \mid \cdots 
+			$$
+			鸽巢原理：将$n$个鸽子塞进$n-1$个巢中，那么必定有一个巢有至少两个鸽子。
+		\end{frame}
+	\section{卡特兰数}
+		\begin{frame}
+			卡特兰数是计数问题中经常遇到的一类数.
+			$$
+				C_n = \binom{2n}{n} - \binom{2n}{n+1}
+			$$
+			
+			\pause
+			
+			常见模型:
+			\begin{enumerate}
+				\item 有$n$对括号的括号序列的方案数.
+				\item 在一个$n \times n$的棋盘从左下角走到右上角,每次只能向右或向上,且不能越过对角线的路径数.
+				\item $n$个节点的带标号的二叉树种类.
+			\end{enumerate}
+			还有很多,详见WIKI.
+		\end{frame}
+	\section{各种组合数求法}
+		\begin{frame}
+			我们经常遇到求组合数的问题.
+			
+			\pause
+			
+			比较常见的几种情形及其可能解法:
+			\begin{enumerate}
+				\item $n \leq 5000$,直接用$\binom{n}{m} = \binom{n-1}{m-1} + \binom{n-1}{m}$递推.
+				\item $n \leq 10^6$模大质数(超过$n$),预处理阶乘及其逆元($O(n)$),然后直接用$\binom{n}{m} = \frac{n!}{m!(n-m)!}$计算.
+				\item $n \leq 10^{18}$模小质数(不超过$10^6$),用lucas定理,转化为上面的问题.
+				\item $n \leq 10^7$,模任意的数,可以先用线性筛晒出$10^7$以内的素数,然后对于每个素数,算出其在$n!$中对应多少次方($O(logn)$),然后指数加减,最后取模.
+			\end{enumerate}
+		\end{frame}	
+		
+		\section{例题选讲}
+			\begin{frame}
+				
+			\end{frame}
+		
+\end{document} 
+
