@@ -22,48 +22,44 @@ idy002, \today
 
 \begin{document}
 
-\begin{problem}{matsum}{matsum.in}{matsum.out}{1 second} 
+\begin{problem}{treasure}{treasure.in}{treasure.out}{1 second} 
 
-    给出$N \times M$的一个矩阵，初始时全部元素为$0$，有两种操作：
-    \begin{itemize}
-    	\item \texttt{modify x y d}：将位置\texttt{(x,y)}的值加上\texttt{d}。
-    	\item \texttt{query x1 y1 x2 y2}： 询问\texttt{(x1,y1)-(x2,y2)}这个矩形的和。
-    	\footnote{\texttt{(x1,y1)-(x2,y2)}表示以\texttt{(x1,y1)}为左上角，\texttt{(x2,y2)}为右下角的矩形}
-    \end{itemize}
+	最近Mr. Hu得到了一个宝箱,但宝箱被上了锁,需要解决一个问题才能将其打开,问题是这样的:
+	
+	你有$n$个不同的苹果,你想从里面选出$m$个来,问方案数,结果可能很大,输出模$M$后的结果输出,其中$M$是$k$个不同的素数$p_1,p_2,...,p_k$的乘积.
+	
+	Mr. Hu一眼就解决了这个问题,但他知道你们最近才学了这方面的知识,于是就把这个问题交给了你们.
+	
 
     \InputFile
 
-    第$1$行，$3$个整数$N, M, Q$，分别表示矩阵的行数、列数及询问数。
+    第$1$行，$3$个整数$n \; m \; k$,意义如上。
     
-    接下来$Q$行，每行是上面两种操作之一。
-
+    第$2$行$k$个不同的素数:$p_1 \; p_2 \; ... \; p_k$.
+   
     \OutputFile
 
-    对于每个询问，输出询问结果。
+	   输出一个整数表示答案.
 
     \Example
 
     \begin{example}
         \exmp{
-            2 2 4
-            modify 1 1 4 
-            query 1 1 2 2
-            modify 2 2 -4
-            query 1 1 2 2 
+        	9 5 2
+        	3 5
         }{
-            4
-            0
+           6
         }%
     \end{example}
 
     \Note
     
     \begin{itemize}
-		\item 对于$30\%$的数据，$1 \leq N, M, Q \leq 500$；
-        \item 对于另外$30\%$的数据，$N = 1, 1 \leq M, Q \leq 10^5$；
-        \item 对于另外$40\%$的数据，$1 \leq N, M \leq 10^3, \; $ $1 \leq Q \leq 10^5,\; $
-        \item 对于所有数据，$ |d| \leq 100, \; $ $1 \leq x \leq N,\; $ $1 \leq y \leq M,\;$ $ 1 \leq x1 \leq x2 \leq N,\;$ 
-		        $ 1 \leq y1 \leq y2 \leq M\;$；
+		\item 对于$10\%$的数据，$1 \leq n \leq 10^3$,$ k = 1 $;
+        \item 对于$30\%$的数据，$1 \leq n \leq 10^5$,$ k = 1 $,$n < p_1$;
+        \item 对于$60\%$的数据，$1 \leq n \leq 10^{18}$,$ k = 1 $; 
+        \item 对于$100\%$的数据，$1 \leq n \leq 10^{18} $, $1 \leq k \leq 10 $
+        \item 对于所有数据，$0 \leq m \leq n \leq 10^{18}$, $2 \leq p_i \leq 10^5$且$p_i$互不相同.
     \end{itemize}
 
 \end{problem}
