@@ -16,13 +16,13 @@
 %\setCJKmonofont{FangSong}
 
 \renewcommand{\contestname}{
-No.7 High School Winter Training - Data Structure 1 \\
+No.7 High School Summer Training - Math \\
 idy002, \today
 }    
 
 \begin{document}
 
-\begin{problem}{treasure}{treasure.in}{treasure.out}{1 second} 
+\begin{problem}{treasure}{treasure.in}{treasure.out}{1 second}{256 MB}
 
 	最近Mr. Hu得到了一个宝箱,但宝箱被上了锁,需要解决一个问题才能将其打开,问题是这样的:
 	
@@ -64,87 +64,107 @@ idy002, \today
 
 \end{problem}
 
-\begin{problem}{segsum}{segsum.in}{segsum.out}{1 second} 
+\begin{problem}{kand}{kand.in}{kand.out}{1 second}{256 MB}
     
-    给出一个长度为$N$的序列，支持一下两种操作：
-    \begin{itemize}
-    	\item \texttt{modify l r d}：将区间$[l,r]$的每个数加上$d$。
-    	\item \texttt{query l r}：询问区间$[l,r]$的最大值，最小值，和。
-    \end{itemize}
+	Mr. Hu创造了一堆数，$a_1,a_2,a_3,...,a_n$，并从中选出$k$个来，把它们按位与起来，这样就得到了一个数$r$，Mr. Hu非常喜欢$s$，所以他希望你们能计算出有多少种选法，使得$r = s$。
 
     \InputFile
 
-    第$1$行，$2$个整数$N, Q$，表示序列长度和询问数。
-
-	接下来$1$行，包含$N$个数，表示初始序列。
-    接下来$Q$行，每行是两种操作之一。
+	第一行$3$个数：$n \; k \; s$。
+	第二行$n$个整数：$a_1 \; a_2 \; a_3 \;...\; a_n$表示给定序列。 
 
     \OutputFile
 
-    对每个询问，输出其答案。
+	输出有多少种选法，答案对$10^9 + 7$取模。
 
     \Example
 
     \begin{example}
         \exmp{
-            4 3 
-            1 2 3 4
-            query 1 3
-            modify 3 -3
-            query 1 4
+            3 2 2
+            1
+            2
+            3
         }{
-            6
-            7
+            2
         }%
     \end{example}
-
+	
+	选２个数出来总共有$3$中方案，分别是：$(1,2),(1,3),(2,3)$，其按位与分别是$0,1,2$，所以只有一个符合要求，输出$1$。
+	
     \Note
     
     \begin{itemize}
-    	\item 对于$30\%$的数据，$1 \leq N, Q \leq 10^3$；
-        \item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$。
+    	\item 对于$10\%$的数据，$1 \leq n \leq 10$, $0 \leq a_i < 2^{10}$；
+        \item 对于$30\%$的数据，$1 \leq n \leq 100$, $0 \leq a_i < 2^{10}$；
+        \item 对于$70\%$的数据，$1 \leq n \leq 10^5$, $0 \leq a_i < 2^{15}$；
+        \item 对于$100\%$的数据，$1 \leq n \leq 10^5$，$0 \leq a_i < 2^{20}$，$1 \leq k \leq n$。
     \end{itemize}
 
 \end{problem}
 
-\begin{problem}{matgcd}{maxgcd.in}{matgcd.out}{1 sequence}
+\begin{problem}{solar}{solar.in}{solar.out}{1 second}{256 MB}
 
-    给出一个$N \times M$的正整数矩阵，再给出$Q$个询问：
-    \begin{itemize}
-    	\item \texttt{query x1 y1 x2 y2}：询问\texttt{(x1,y1)-(x2,y2)}这个子矩形的最大公约数。
-    \end{itemize}
+	Mr. Hu非常喜欢遨游太空，所以经常看见星球碰撞，这天，他观察到了周围星球的位置和运动速度，想让你推演一下接下来的演化。
+	这片空间是三维的，其中坐标$(x,y,z)$的范围为$[0,nx)\times[0,ny)\times[0,nz)$，其中有$n$个星球，每个星球都有个质量$m_i$。
+	
+	现在告诉你这$n$个星球的坐标，其中第$i$个星球坐标为$(x_i,y_i,z_i)$（保证$0 \leq x_i < nx$,$0 \leq y_i < ny$，$0 \leq z_i < nz$），运动的速度为$(vx_i,vy_i,vz_i)$。
+	
+	如果一个星球当前坐标为$(x,y,z)$，速度为$(vx,vy,vz)$，那么下一秒它会到达
+	
+	$$(x+vx　\; mod \; nx,y+vy \; mod \; ny, z + vz \; mod \; nz)$$
+	
+	如果两个或多个星球在某个整数秒的时刻运动到了同一个位置，则发生了一次碰撞，这些星球会融合成一个质量更大的星球，坐标不变，速度是所有星球速度和的平均值（如果某一维不是整数，则将该维分量向$0$取整），质量变为所有星球的质量总和。
+	
+	现在询问你在最后一次碰撞发生后（融合完成后），每个星球质量，坐标及速度。
 
     \InputFile
 
-    第$1$行，$2$个整数$N, M$，表示矩阵的行数和列数。
-
-    接下来$N$行，每行$M$个正整数。
+	第$1$行$4$个整数，表示$n \; nx \; ny \; nz$，即最开始的星球数及各维坐标的范围。
+	
+	接下来$n$行，每行$7$个数：$m_i \; x_i \; y_i \; z_i \; vx_i \; vy_i \; vz_i$，给出一个星球的信息。
 
     \OutputFile
+    
+    第$1$行$1$个整数$r$，表示最后一次碰撞发生后，还剩下的星球数。
+    
+    接下来$r$行，每行输出$m_i \; x_i \; y_i \; z_i \; vx_i \; vy_i \; vz_i$，表示一个星球的信息。输出先按质量从大到小排序，之后再按位置坐标字典序从小到大排序。
 
     \Example
 
     \begin{example}
         \exmp{
-            3 3 3
-            3 6
-            4 2
-            query 1 1 2 2
-            query 1 1 1 2
-            query 1 2 2 2  
+            2 8 8 8
+            12 4 1 4 5 3 -2
+            10 1 2 1 8 -6 1
         }{
             1
-            3
-            2
+            22 1 4 2 6 -1 0
         }%
     \end{example}
-
+    
+    样例解释：两个星球会在第$1$秒相撞，平均速度为$(\frac{13}{2},-\frac{3}{2},-\frac{1}{2})$，向$0$取整后为$(6,-1,0)$。
+    
+    \begin{example}
+       	\exmp{
+        	2 10 20 30
+        	10 1 0 0 2 0 0
+        	15 2 0 0 4 0 0
+       	}{
+        	2
+        	15 2 0 0 4 0 0
+        	10 1 0 0 2 0 0
+        }%
+    \end{example}
+	
+	样例解释：两个星球永远不会撞，直接输出第$0$秒的情况。
+	
     \Note
     \begin{itemize}
-        \item 对于$30\%$的数据，$1 \leq N, M, Q \leq 500$；
-        \item 对于另外$30\%$的数据，$N = 1, \; 1 \leq M \leq 500, \; 1 \leq Q \leq 10^5$；
-        \item 对于另外$40\%$的数据，$1 \leq N, M \leq 500, \; 1 \leq Q \leq 10^5$；
-        \item 对于$100\%$的数据，$1 \leq x1 \leq x2 \leq N, \; 1 \leq y1 \leq y2 \leq M$。
+		\item 对于$10\%$的数据，$n = 2$, $1 \leq nx, ny, nz \leq 10$。
+		\item 对于$30\%$的数据，$1 \leq n \leq 5$, $1 \leq nx, ny, nz \leq 10$。
+		\item 对于另外$40\%$的数据，$1 \leq n \leq 100$,$1 \leq nx, ny, nz \leq 10^3$，保证$nx,ny,nz$都是质数。
+		\item 对于$100\%$的数据，$1 \leq n \leq 100$,$1 \leq nx, ny, nz \leq 10^3$，$0 \leq x_i < nx$, $0 \leq y_i < ny$, $0 \leq z_i < nz$，$-nx < vx_i < nx$, $-ny < vy_i < ny$, $-nz < vz_i < nz$, $1 \leq m_i \leq 100$。
     \end{itemize}
 
 \end{problem}
