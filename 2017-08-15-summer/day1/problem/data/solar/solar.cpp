@@ -120,13 +120,14 @@ int main() {
 			vz[a[i]] = vz_sum / cnt;
 		}
 			/*printf("%d\n", n);
-	for (int i = 1; i <= n; i++)
+			for (int i = 1; i <= n; i++)
 		printf("P%d: %d %d %d %d %d %d %d\n", i - 1, m[a[i]], x[a[i]], y[a[i]], z[a[i]], vx[a[i]], vy[a[i]], vz[a[i]]);*/
 	}
 	
 	sort(a + 1, a + n + 1, cmp);
 	printf("%d\n", n);
 	for (int i = 1; i <= n; i++)
-		printf("P%d: %d %d %d %d %d %d %d\n", i - 1, m[a[i]], x[a[i]], y[a[i]], z[a[i]], vx[a[i]], vy[a[i]], vz[a[i]]);
+		printf("%d %d %d %d %d %d %d\n", m[a[i]], x[a[i]], y[a[i]], z[a[i]], vx[a[i]], vy[a[i]], vz[a[i]]);
+	//	printf("P%d: %d %d %d %d %d %d %d\n", i - 1, m[a[i]], x[a[i]], y[a[i]], z[a[i]], vx[a[i]], vy[a[i]], vz[a[i]]);
 	return 0;
 }
