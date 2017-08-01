@@ -247,11 +247,127 @@
 				\item $n \leq 10^7$,模任意的数,可以先用线性筛晒出$10^7$以内的素数,然后对于每个素数,算出其在$n!$中对应多少次方($O(logn)$),然后指数加减,最后取模.
 			\end{enumerate}
 		\end{frame}	
-		
-		\section{例题选讲}
-			\begin{frame}
+	
+	\section{积性函数}
+		\begin{frame}
+				积性是函数的一种重要性态，就像单调性、周期性一样。
 				
-			\end{frame}
+				一个函数$f(n)$如果是积性的，当且仅当：
+				$$
+				f(nm) = f(n)f(m) \quad (gcd(m,n) = 1)
+				$$
+				
+				如果$f(n)$是定义在$Z^{+}$上的积性函数，这样定义$Z^{+}$上的$g(n)$：
+				
+				$$
+				g(n) = \sum_{d \mid n} f(d)
+				$$
+				
+				那么可以证明$g(n)$也是一个积性函数。
+				
+		\end{frame}
 		
+		\begin{frame}
+			
+			假设$n$有质因分解：$n = p_1^{\alpha_1}p_2^{\alpha_2}\dots p_s^{\alpha_s}$。从而：
+			$$
+			g(p_1^{\alpha_1}p_2^{\alpha_2}\dots p_s^{\alpha_s}) = \sum_{d \mid p_1^{\alpha_1}p_2^{\alpha_2}\dots p_s^{\alpha_s}}f(d) = \sum_{i_1 = 0}^{\alpha_1}\sum_{i_1 = 0}^{\alpha_1}\cdots\sum_{i_s = 0}^{\alpha_s}f(p_1^{i_1}p_2^{i_2}\dots p_s^{i_s}) 
+			$$
+			因为$f(n)$是积性函数，我们可以继续：
+			$$
+			= \sum_{i_1 = 0}^{\alpha_1}\sum_{i_1 = 0}^{\alpha_1}\cdots\sum_{i_s = 0}^{\alpha_s}f(p_1^{i_1})f(p_2^{i_2})\dots f(p_s^{i_s}) 
+			$$
+			由求和的性质，又有：
+			$$
+			= \sum_{i_1 = 0}^{\alpha_1}f(p_1^{i_1})\sum_{i_1 = 0}^{\alpha_1}f(p_2^{i_2})\cdots\sum_{i_s = 0}^{\alpha_s}f(p_s^{i_s}) =  (\sum_{i_1 = 0}^{\alpha_1}f(p_1^{i_1}))(\sum_{i_1 = 0}^{\alpha_1}f(p_2^{i_2}))\cdots(\sum_{i_s = 0}^{\alpha_s}f(p_s^{i_s}))
+			$$
+			$$
+			= g( p_1^{\alpha_1})g(p_2^{\alpha_2})\dots　g(p_s^{\alpha_s})
+			$$
+			从而有：
+			$$
+			g(p_1^{\alpha_1}p_2^{\alpha_2}\dots p_s^{\alpha_s}) = g( p_1^{\alpha_1})g(p_2^{\alpha_2})\dots　g(p_s^{\alpha_s})
+			$$
+			就证明了$g(n)$的积性。
+		\end{frame}
+	
+		\begin{frame}
+			以下是常见的一些积性函数：
+			\begin{itemize}
+				\item $\tau(n)$  正整数$n$的正因子个数。
+				\item $\sigma(n)$  正整数$n$的正因子和。
+				\item $\mu(n)$  正整数$n$的Mobius函数值。
+				\item $\varphi(n)$  正整数$n$的欧拉函数值，即$[1,n]$中与$n$互质的数的个数。
+			\end{itemize}
+			
+		\end{frame}
+	
+	\section{线性筛}
+		\begin{frame}
+			线性筛可以$O(n)$的时间和空间复杂度内筛出$ [1,n] $之间的所有素数。
+			
+			设一个数$a$的最小素因子是$p$，则保证数$a$只会被$\frac{a}{p}$筛掉。这保证了它的时间复杂度是$O(n)$的。
+			
+			然后因为我们在筛一个数的时候可以知道那个数的最小素因子，所以对于很多积性函数，我们可以顺便筛出来。
+		\end{frame}
+		
+	\section{例题选讲}
+		\begin{frame}
+			求			\footnote{BZOJ 3560}
+			$$
+				\sum_{i_1 \mid a_1}\sum_{i_2 \mid a_2}\cdots\sum_{i_n \mid a_n }  \varphi(i_1i_2\dots i_n) \quad mod \; 10^9 + 7
+			$$
+			其中
+			$$
+				1 \leq n \leq 10^5, \quad 1 \leq a_i \leq 10^7
+			$$
+			\pause
+			用积性函数的性质，考虑对每个素数分开做。
+		\end{frame}
+		
+		\begin{frame}
+			给你一个数列${a_n}$($1 \leq a_i \leq m$,$m \leq 10^5$ )，求存在多少个数列${b_n}$满足：\footnote{HDU 6053}
+			\begin{enumerate}
+				\item $1 \leq b_i \leq a_i $
+				\item $gcd(b_1,b_2,b_3,\dots,b_n) \neq 1$
+			\end{enumerate}
+			
+			
+			\pause 
+			我们设$F(d)$表示$gcd=d$的数列个数，那么显然有：
+			$$
+				F(d) = \prod_{i = 1}^{n} \lfloor \frac{a_i}{d} \rfloor
+			$$
+			我们枚举$a_i$，每个$a_i$有$O(\sqrt{n})$段$\lfloor \frac{a_i}{d} \rfloor$值相同的区间，然后就可以有一个$O(n\sqrt{m})$的算法，但这样会TLE。
+			
+			
+		\end{frame}
+		\begin{frame}
+			我们用$cnt[a]$表示$a$在$a_i$中出现的次数，那么有：
+			$$
+				F(d) = \prod_{a=1}^{m} \lfloor \frac{i}{d} \rfloor^{cnt[i]}
+			$$
+			和上面一样，$ \lfloor \frac{i}{d} \rfloor$的值也是一段一段的，我们只需要一段一段的枚举即可，然后用快速幂计算即可。
+			
+			对于$d$，一共有$\frac{m}{d}$段.当$d$从$2$取到$m$时，总的段数是：
+			$$
+				m(\frac{1}{1} + \frac{1}{2} + \cdots + \frac{1}{m}) = O(mlogm)
+			$$
+			
+			每段需要一次快速幂，总的复杂度$O(mlog^2m)$
+		\end{frame}
+		\begin{frame}
+			给你一个正整数$S$，问你有多少个数$a$，满足$a$的约数和为$S$．\footnote{BZOJ 3629}
+			
+			输出个数及分别是哪些数．
+			
+			\pause
+			
+			设$F(n)$表示一个数的约数和，那么显然这是个积性函数，即：
+			$$
+				F(p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}) = F(p_1^{a_1})F(p_2^{a_2})\cdots F(p_k^{a_k})
+			$$
+			然后我们就可以爆搜了．
+		\end{frame}
 \end{document} 
 
