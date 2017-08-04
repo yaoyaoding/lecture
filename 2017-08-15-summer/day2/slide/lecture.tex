@@ -3,7 +3,7 @@
 \usepackage{listings}
 \usepackage{graphicx}
 
-\title{数学第一讲}
+\title{数学第二讲}
 \subtitle{离散对数、元根、反演}
 \author{丁尧尧}
 \institute{上海交通大学}
@@ -17,10 +17,43 @@
 	\end{frame}
 	
 	\section{离散对数}
-		对于以下问题：
-		\begin{theorem}
-		\end{theorem}
+		\begin{frame}
+			对于以下问题：
+			\begin{definition}[离散对数]
+				给定$a$,$b$,$m$，其中$a$与$m$互素，求最小的非负（正）整数$x$，使得：
+				$$
+				a^x \equiv b \quad (mod \; m)
+				$$
+				我们称$x$为在模$m$意义下，以$a$为底的$b$的离散对数，记作$ind_ab$。
+			\end{definition}
+			给出$a,b,m$，（我们假设$a$与$m$互素）我们如何求$x$呢？
+		\end{frame}
+		\begin{frame}
+			有一个叫做大步小步的算法（Baby Step Giant Step）。
+			我们假设$x = ic + j$是一个答案（其中$c$是我们自己选定的一个在$2,m-1$之间的数）。
+			我们先计算出：
+			$$
+			a^1, a^2, a^3, \cdots, a^{b-1}
+			$$			
+			如果发现其中某个值是$b$，那么我们就找到答案了。否则，我们将这些数放在一个数据结构中（平衡二叉树，哈希表都可以），要求可以通过$a^i$的值快速得到$i$。那么我们再依次算出：
+			$$
+			ba^{-c}, ba^{-2c}, \cdots, ba^{-kc}
+			$$
+			每算完一个$ba^{-ic}$，我们就看上面的数据结构中是否有一个值$a^j$等于它，如果有，那么它们满足：
+			$$
+			a^j \equiv ba^{-ic} \quad (mod \; m)
+			$$
+			即：
+			$$
+			a^{ic + j} \equiv b \quad (mod \; m)
+			$$
+		\end{frame}
+		\begin{frame}
+			分析复杂度，如果我们上面用哈希表存，那么可以$O(1)$判断某个值是否存在。
+			
+			
+		\end{frame}
 	\section{元根}
 	\section{反演}
-\end{document} 
+\end{document}
 
