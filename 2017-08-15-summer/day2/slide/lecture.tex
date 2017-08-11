@@ -1,7 +1,15 @@
-\documentclass{beamer}
+\documentclass[9pt]{beamer}
 \usepackage{xeCJK}
-\usepackage{listings}
-\usepackage{graphicx}
+
+\usetheme{Berkeley}
+\usefonttheme[onlymath]{serif}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+
 
 \title{数学第二讲}
 \subtitle{离散对数、元根、反演}
@@ -65,9 +73,9 @@
 				$$
 					a_1, a_2, a_3,\dots, a_{m}
 				$$
-				满足:
+				对于任何数$a$,存在唯一数$a_i$满足:
 				$$
-				a_i \not \equiv a_j \quad (i \neq j)
+					a \equiv a_i \quad (mod \; m)
 				$$
 				那么我们将$\{a_i\}$称作模$m$的一组完全剩余系.
 			\end{definition}
@@ -82,11 +90,11 @@
 				$$
 				满足:
 				$$
-					a_i \not \equiv a_j \quad (i \neq j)
-				$$
-				以及:
-				$$
 					gcd(a_i,m) = 1
+				$$
+				且对于任何和$m$互质的数$a$,有唯一的$a_i$满足:
+				$$
+					a \equiv a_i \quad (mod \; m)
 				$$
 				那么我们将$\{a_i\}$称作模$m$的一组既约剩余系.
 			\end{definition}
@@ -94,7 +102,7 @@
 		\end{frame}
 		\begin{frame}
 			\begin{definition}[阶]
-				给定一个与$m$互素的$a$,则最小的一个满足:
+				给定一个与$m(1 \leq m)$互素的$a$,则最小的一个满足:
 				$$
 					a^r \equiv 1 \quad (mod m)
 				$$
@@ -128,9 +136,9 @@
 			\begin{theorem}
 				只有形如:
 				$$
-				1,2,4,p^i,2p^i
+				1,2,4,p^{\alpha},2p^{\alpha}
 				$$
-				的数存在元根.
+				的数存在元根(其中$\alpha \geq 1$且$p$是奇素数).
 			\end{theorem}
 			
 			那么我们怎样找元根呢?
@@ -150,7 +158,7 @@
 		\begin{frame}
 			通过上面这个定理可以证明:
 			\begin{theorem}
-				对于给定的与$m > 2$互素的一个数$g$, $g$是$m$的一个元根当且仅当对于$\varphi(m)$的所有素因子$p_i$,有:
+				对于给定的与$m \geq 2$互素的一个数$g$, $g$是$m$的一个元根当且仅当对于$\varphi(m)$的所有素因子$p_i$,有:
 				$$
 				g^{\frac{\varphi(m)}{p_i}} \not \equiv 1 \quad (mod \; m)
 				$$
@@ -163,11 +171,11 @@
 			\begin{block}{例题1}
 				给你$a,b,m$,都是正整数,其中$m$是素数,求:
 				$$
-					a^x \equiv b \quad (mod m)
+					a^x \equiv b \quad (mod \; m)
 				$$
-				其中:$2 \leq m \leq 2\times10^9$
+				其中:$2 \leq m \leq 2\times10^9$,$1 \leq a, b\ < m$
 			\end{block}
-			很用离散对数就可以秒了对不对.
+			很容易离散对数就可以秒了对不对.
 		\end{frame}
 		\begin{frame}
 			\begin{block}{例题2}
@@ -175,7 +183,7 @@
 				$$
 					a_i^x \equiv b_i \quad (mod m) \quad(i = 1, 2)
 				$$
-				其中:$2 \leq m \leq 2\times10^9$
+				其中:$2 \leq m \leq 2\times10^9$且$1 \leq a_i, b_i < m$.
 			\end{block}
 
 		\end{frame}
@@ -196,21 +204,24 @@
 					xc_i \equiv d_i \quad(mod \quad m - 1)
 				$$
 				从而把问题转化为解一元一次同余方程组的问题.
-		\end{frame}
-		\begin{frame}
-			\begin{block}{例题3}
-				给你$a,b,m$,其中$m$是质数,求$x$满足:
+			\end{frame}
+						
+			\begin{frame}
+				\begin{block}{例题3}
+				给你三个正整数$a,b,m$,其中$m$是质数,求$x$满足:
 				$$
-					x^a \equiv b \quad (mod m)
+						x^a \equiv b \quad (mod m)
 				$$
-			\end{block}
-			同样先求离散对数,然后解一次方程,得到$ind_g(x)$,最后快速幂一下就行了.
-		\end{frame}
-		\begin{frame}
-			元根,离散对数,主要的作用是把一些和指数有关的问题转化成一般的一次同余方程,类似于正实数上的开$log$运算.
-			
-			只是在模意义下,我们的底需要精细地选取.
-		\end{frame}
+				其中:$1 \leq x, b< m$
+				\end{block}
+				同样先求离散对数,然后解一次方程,得到$ind_g(x)$,最后快速幂一下就行了.
+			\end{frame}
+			\begin{frame}
+				元根,离散对数,主要的作用是把一些和指数有关的问题转化成一般的一次同余方程,类似于正实数上的开$log$运算.
+				
+				只是在模意义下,我们的底需要精细地选取.
+			\end{frame}
+	
 		\section{反演}
 		
 				
