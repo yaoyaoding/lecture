@@ -1,0 +1,88 @@
+\documentclass[10pt,a4paper,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xeCJK}
+\author{idy002}
+\title{Solution}
+
+\begin{document}
+	\maketitle
+	
+	\newpage
+	\section{modlog}
+		\subsection{10\%}
+			暴力，不用快速幂。
+		\subsection{30\%}
+			暴力，用快速幂。
+		\subsection{另外30\%}
+			解
+			$$
+				x^a \equiv b \quad (mod \; m)
+			$$
+			如果$b$为$0$，那么只有$x = 0$一个解。所以以下讨论都建立在$b \not= 1$的基础上。
+			首先找到$m$的一个元根$g$，然后求$b$的离散对数$ind_gb$，方程就变成了：
+			$$
+				aind_gx \equiv ind_gb \quad (mod \; m - 1)
+			$$
+			这个方程的每个解对应于原方程的一个解。
+			
+			具体来说，如果$(a,m-1) \not\mid ind_gb$，那么原方程无解，否则有$(a,m-1)$个解。
+			 
+		\subsection{100\%}
+			假如我们解出了上面那个方程：
+			$$
+				ind_gx \equiv r \quad(mod \; s)
+			$$
+			其中：
+			$$
+				s = \frac{m-1}{(m-1,a)}
+			$$
+			我们的$(m-1,a)$个解就是：
+			$$
+				g^{r}, g^{r+s}, g^{r+2s},\dots,g^{r+m-1-s}
+			$$
+			如果公比是$1$，即$g^s = 1 \quad (mod \; m)$，那么和就是$(m-1,a)g^r$。
+			
+			如果公比不是$1$，那么由等比数列求和更是我们会发现答案为$0 \quad (mod \; m)$。
+	\newpage
+	\section{sumit}
+		\subsection{30\%}
+			枚举暴力。复杂度$O(n^2)$。
+		\subsection{另外30\%}
+			我们推一推反演公式，发现结果如下：
+			$$
+				ans = \sum_{d = 1}^{min(n,m)} \mu(d) d F(\lfloor \frac{n}{d} \rfloor, \lfloor \frac{m}{d} \rfloor)
+			$$
+			其中：
+			$$
+				F(a,b) = b\sum_{i = 1}^{b}i + a\sum_{i = 1}^{a}i
+			$$
+			显然$F(a,b)$可以直接算，于是我们就暴力枚举$d$即可，复杂度$O(n)$。
+			
+		\subsection{100\%}
+			上面对$\mu(d)d$求一个前缀和，我们就可以一块一块地跳。$O(\sqrt{n})$
+		
+	\newpage
+	\section{secret}
+		\subsection{20\%}
+			dfs暴力枚举每个数。
+		\subsection{60\%}
+			我们因为有：
+			  $$
+				   a_i = \sum_{i \mid j} b_j
+			  $$
+			所以：
+			$$
+				b_i = a_i - \sum{i \mid j \text{且} j \neq i} b_j
+			$$
+			然后从后往前算，就可以了。因为中间有个调和级数，所以复杂度$O(nlogn)$。
+		\subsection{100\%}
+			由莫比乌斯反演的另一种形式，我们有：
+			$$
+				b_i = \sum_{i \mid j}a_j\mu(\frac{j}{i})
+			$$	
+			讲这里的$i$代成$1$即可。复杂度$O(n)$。
+\end{document}

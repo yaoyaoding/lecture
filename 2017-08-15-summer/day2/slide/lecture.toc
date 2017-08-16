@@ -1,3 +1,13 @@
 \beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{离散对数}{3}{0}{1}
-\beamer@sectionintoc {2}{元根}{6}{0}{2}
+\beamer@subsectionintoc {1}{1}{离散对数定义}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{大步小步走}{5}{0}{1}
+\beamer@sectionintoc {2}{元根}{10}{0}{2}
+\beamer@subsectionintoc {2}{1}{一些概念}{10}{0}{2}
+\beamer@subsectionintoc {2}{2}{阶和元根}{13}{0}{2}
+\beamer@subsectionintoc {2}{3}{例题}{22}{0}{2}
+\beamer@sectionintoc {3}{反演}{31}{0}{3}
+\beamer@subsectionintoc {3}{1}{引入}{31}{0}{3}
+\beamer@subsectionintoc {3}{2}{莫比乌斯函数}{40}{0}{3}
+\beamer@subsectionintoc {3}{3}{莫比乌斯反演}{49}{0}{3}
+\beamer@subsectionintoc {3}{4}{例题}{59}{0}{3}

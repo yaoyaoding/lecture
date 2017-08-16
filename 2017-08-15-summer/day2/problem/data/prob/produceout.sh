@@ -1,10 +1,23 @@
-#!/bin/bash
+#!/usr/bin/python
 
-prob="probname"
+from random import *
 
-for((i=1;i<=10;i++))
-do
-	time ./${prob} < ${prob}${i}.in > ${prob}${i}.ans
-	echo "make " ${prob}${i} "..."
-done
+prob = "name"
+
+cases = [   #(n,m,q)
+        ]
+cur = 0
+for (n,m,q) in cases :
+    cout = "%d %d %d\n" % (n, m, q)
+    cur += 1
+    print "make %d..." % cur
+##-----
+#TODO generate the data
+
+
+
+##-----
+    f = file( prob + str(cur) + ".in", "w" )
+    f.write( cout )
+    f.close()
 
