@@ -6,14 +6,14 @@ const int Mod = 10086;
 
 int notprime[N];
 vector<int> primes;
-int mu[N], smu[N];
+int ph[N], sph[N];
 
 void sieve(int n) {
-	mu[1] = 1;
+	ph[1] = 1;
 	for(int i = 2; i <= n; i++) {
 		if(!notprime[i]) {
 			primes.push_back(i);
-			mu[i] = -1;
+			ph[i] = i - 1;
 		}
 		for(int t = 0; t < (int)primes.size(); t++) {
 			int p = primes[t];
@@ -21,18 +21,17 @@ void sieve(int n) {
 			if(j > n) break;
 			notprime[j] = true;
 			if(i % p == 0) {
-				mu[j] = 0;
+				ph[j] = ph[i] * p;
 				break;
 			} else {
-				mu[j] = -mu[i];
+				ph[j] = ph[i] * (p - 1);
 			}
 		}
 	}
-	for(int i = 1; i <= n; i++)
-		smu[i] = ((smu[i-1] + 1LL * mu[i] * i) % Mod + Mod) % Mod;
-}
-inline int S(int n) {
-	return (1LL * (1 + n) * n / 2) % Mod;
+	for(int i = 1; i <= n; i++) {
+		sph[i] = sph[i-1] + ph[i] % Mod;
+		if(sph[i] >= Mod) sph[i] -= Mod;
+	}
 }
 int main() {
 	int T;
@@ -46,8 +45,9 @@ int main() {
 			dd = min(n/(n/d),m/(m/d));
 			int nd = n / d;
 			int md = m / d;
-			int val = 1LL * (nd * S(md) + md * S(nd)) % Mod;
-			ans = (ans + 1LL * ((smu[dd] - smu[d-1]) % Mod + Mod) % Mod * val % Mod) % Mod;
+			int val = 1LL * (sph[dd] - sph[d-1]) * nd % Mod * md % Mod;
+			if(val < 0) val += Mod;
+			ans = (ans + val) % Mod;
 		}
 		printf("%d\n", ans);
 	}

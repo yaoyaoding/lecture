@@ -1,0 +1,58 @@
+\documentclass[9pt]{beamer}
+\usepackage{xeCJK}
+
+\usetheme{Berkeley}
+\usefonttheme[onlymath]{serif}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+
+\title{哈哈}
+\subtitle{快速傅里叶变换}
+\author{丁尧尧}
+\institute{上海交通大学}
+\date{\today}
+\usetheme{CambridgeUS}
+
+\begin{document}
+	\begin{frame}
+		\begin{align*}
+			A(x) = \sum_{i=0}^na_ix^i = a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0 \\ 
+			B(x) = \sum_{i=0}^nb_ix^i = b_nx^n+b_{n-1}x^{n-1}+\cdots+b_1x+b_0
+		\end{align*}
+		\begin{align*}
+			A(\omega_n^k) = \sum_{i=0}^{n-1}a_i\omega^{ki} , k = 0, 1, \cdots, n - 1
+		\end{align*}
+		
+		\begin{eqnarray*} 
+			A(\omega_n^k) &=& \sum_{i=0}^{n-1}a_i\omega_n^{ki} \\
+			 &=&\sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_n^{2ki}+\omega_n^k\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_n^{2ki} \\ 
+		\end{eqnarray*}
+		\begin{align*}
+		\omega_n^2=\left(e^{\frac{2\pi i}{n}}\right)^2=e^{\frac{2\pi i}{n/2}}=\omega_{\frac{n}{2}}
+		\end{align*}
+		
+	\end{frame}	
+	\begin{frame}
+		设$k < \frac{n}{2}$:
+		\begin{align*}
+			A(\omega_n^k) = \sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}+\omega_n^{k}\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki}
+		\end{align*}
+		\begin{eqnarray*} 
+			A(\omega_n^{k+\frac{n}{2}}) &=& \sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}+\omega_n^{k+\frac{n}{2}}\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki} \\ &=&\sum_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}-\omega_n^k\sum_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki} 
+		\end{eqnarray*}
+		\begin{align*}
+		T(n) = 2T(\frac{n}{2})+\mathcal O(n) = \mathcal O(n\log n)
+		\end{align*}
+		
+	\end{frame}
+	\begin{frame}
+		\begin{equation} \label{IDFT-equation} \begin{bmatrix} (\omega_n^0)^0 & (\omega_n^0)^1 & \cdots & (\omega_n^0)^{n-1} \\ (\omega_n^1)^0 & (\omega_n^1)^1 & \cdots & (\omega_n^1)^{n-1} \\ \vdots & \vdots & \ddots & \vdots \\ (\omega_n^{n-1})^0 & (\omega_n^{n-1})^1 & \cdots & (\omega_n^{n-1})^{n-1} \end{bmatrix} \begin{bmatrix} a_0 \\ a_1 \\ \vdots \\ a_{n-1} \end{bmatrix} = \begin{bmatrix} A(\omega_n^0) \\ A(\omega_n^1) \\ \vdots \\ A(\omega_n^{n-1}) \end{bmatrix} \end{equation}
+		系数矩阵的逆矩阵：
+		\begin{equation*} \mathbf D = \begin{bmatrix} (\omega_n^{-0})^0 & (\omega_n^{-0})^1 & \cdots & (\omega_n^{-0})^{n-1} \\ (\omega_n^{-1})^0 & (\omega_n^{-1})^1 & \cdots & (\omega_n^{-1})^{n-1} \\ \vdots & \vdots & \ddots & \vdots \\ (\omega_n^{-(n-1)})^0 & (\omega_n^{-(n-1)})^1 & \cdots & (\omega_n^{-(n-1)})^{n-1} \end{bmatrix} \end{equation*}
+	\end{frame}
+\end{document} 
+

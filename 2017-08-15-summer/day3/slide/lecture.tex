@@ -1,0 +1,141 @@
+\documentclass[9pt]{beamer}
+\usepackage{xeCJK}
+
+\usetheme{Berkeley}
+\usefonttheme[onlymath]{serif}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+
+\title{数学第三讲}
+\subtitle{高斯消元、快速傅里叶变换}
+\author{丁尧尧}
+\institute{上海交通大学}
+\date{\today}
+\usetheme{CambridgeUS}
+
+\begin{document}
+	\maketitle
+	\begin{frame}{目录}
+		\tableofcontents
+	\end{frame}
+	
+	\section{高斯消元}
+		\subsection{解方程}
+		\begin{frame}
+			求解下列方程组：
+			\begin{align*}
+				a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & =  c_1 \\
+				a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & =  c_2 \\
+				a_{31}x_1 + a_{32}x_2 + \cdots + a_{3n}x_n & =  c_3 \\
+				\cdots & \\
+				a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n & =  c_m 
+			\end{align*}
+			
+			\pause
+			怎么解？
+		\end{frame}
+		\subsection{方阵的行列式}
+		\begin{frame}
+			\begin{itemize}
+			\item \pause 行列式是什么?	\\
+				\pause 一种定义是：
+				$$
+					det(A) = \sum_{i_1i_2\dots i_n}(-1)^{\sigma(i_1i_2\dots i_n)}a_{1i_1}a_{2i_2}\dots a_{ni_n}
+				$$
+				其中$i_1i_2\dots i_n$是一个$1$到$n$的排列，$\sigma(i_1i_2\dots i_n)$表示该排列的逆序对数。
+			\item \pause 行列式的几何意义。
+			\item \pause 行列式的性质 \\
+				\pause 
+				\begin{itemize}
+					\item \pause 某行乘一个数，那么行列式也乘那个数。
+					\item \pause 某行加到另一行，行列式不变
+					\item \pause 交换两行，行列式取反相反数
+				\end{itemize}
+			\item \pause 行列式的计算。\\
+				  \pause 高斯消元！
+
+			\end{itemize}
+		\end{frame}
+		
+		\subsection{矩阵求逆}
+		\begin{frame}{矩阵乘法}
+			矩阵乘法大家都知道：
+			$$
+				A_{n\times m}B_{m\times r} = C_{n\times r}
+			$$
+			对于方阵而言，假如：
+			$$
+				AB = BA = E
+			$$
+			那么$A$、$B$互为逆矩阵。
+			
+			有两个问题：
+			\begin{itemize}
+				\item 什么时候一个方阵存在逆矩阵？
+				\item 如果存在，怎么求？
+			\end{itemize}
+		\end{frame}
+		\begin{frame}
+			对于第一个问题：一个矩阵存在逆矩阵当且仅当其满秩（秩是行向量组或列向量组的最大线性无关组的大小）当且仅当矩阵行列式非0.
+			
+			我们怎么求一个方阵的逆矩阵呢？
+			\begin{enumerate}
+				\item 矩阵进行如下操作可以相当于用一个矩阵乘以它:
+				
+				\begin{itemize}
+					\item　将一行上的所有数乘以$k$
+					\item 将一行加到另一行上
+					\item 交换两行
+				\end{itemize}
+				
+				\item 求逆的过程
+				
+				如果要求矩阵$A$的逆矩阵$A^{-1}$,先得到一个单位矩阵$B$,
+				然后用上面1中的三种操作将$A$变成单位矩阵(不能变成单位矩阵则说明该矩阵行列式为0,即该矩阵不存在逆)
+				
+				将对$A$的所有操作同样地应用于$B$,最终$B$就是$A^{-1}$
+				\item  求逆的正确性
+				　我们对$A$进行了一系列变换,等同于用一个矩阵$C$乘以$A$使得 $CA = I$，即$C$是$A$的逆矩阵, 将同样的操作作用于$B$,得到的矩阵为 $CB = CI = C$，即最终B的结果就是我们要求的逆
+			\end{enumerate}
+		\end{frame}
+		\subsection{Matrix-Tree定理}
+		\begin{frame}
+			一些概念：\pause 
+			\begin{itemize}
+				\item 度数矩阵 \pause 
+				\item 邻接矩阵 \pause 
+				\item 基尔霍夫矩阵 = 度数矩阵 - 邻接矩阵
+			\end{itemize}
+			
+			\pause
+			Matrix-Tree定理： \pause
+			\begin{theorem}
+				一个$n$个点$m$条边的无向图的生成树总数为其对应的基尔霍夫矩阵的$n-1$阶余子式。
+			\end{theorem}
+		\end{frame}
+		
+	\section{快速傅里叶变换}
+		\subsection{快速傅里叶变换}
+		\begin{frame}
+			\begin{itemize}
+				\item \pause 快速傅里叶算法解决的问题：快速进行多项式乘法（卷积）。
+				\item \pause 多项式的两种表示方法：系数表示法和点值表示法
+				\item \pause 点值表示法的优点
+				\item \pause 复数域$n$次单位根
+				\item \pause 快速地将系数表示法转化成点值表示法
+				\item \pause 快速地将点值表示法转换成系数表示法
+				\item \pause 常数更小的写法？ \pause 非递归写法！
+				\item \pause 一定要在复数域？ \pause 对于一些特殊的模空间也可以做。 
+				\item \pause 一般的模空间 ?
+			\end{itemize}
+		\end{frame}
+		\subsection{一些题目}
+		\begin{frame}
+		\end{frame}
+	
+\end{document} 
+

@@ -16,7 +16,7 @@
 %\setCJKmonofont{FangSong}
 
 \renewcommand{\contestname}{
-No.7 High School Winter Training - Data Structure 1 \\
+No.7 High School Summer Training - Math 2 \\
 idy002, \today
 }    
 
@@ -85,10 +85,7 @@ idy002, \today
 	
 	Mr. Hu 最近画了一个很大的表格，这个表格有$n$行$m$列，其中第$i$行第$j$列的为元素$a_{ij}$，且：
 	$$
-		a_{ij} = \begin{cases}
-			i + j & \quad \text{当} \; gcd(i,j) = 1 \\
-			0 & \quad \text{当}\; gcd(i,j) \neq 1
-		\end{cases}
+		a_{ij} = gcd(i,j)
 	$$
 	Mr. Hu 现在很好奇整个表格中数的和是多少，你只需要输出这个和模$10086$。
 
@@ -109,8 +106,8 @@ idy002, \today
     		2 2
     		3 4
     	}{
-	    	8
-	    	38
+			5
+			16
 		}%
    \end{example}
    
@@ -122,6 +119,47 @@ idy002, \today
 	   	\item 对于$100\%$的数据，$1 \leq n, m \leq 10^7$，$1 \leq T \leq 1000$。
    \end{itemize}
 \end{problem}	
+%\begin{problem}{sumit}{sumit.in}{sumit.out}{1 second}{256 MB}
+%	
+%	Mr. Hu 最近画了一个很大的表格，这个表格有$n$行$m$列，其中第$i$行第$j$列的为元素$a_{ij}$，且：
+%	$$
+%		a_{ij} = \begin{cases}
+%			i + j & \quad \text{当} \; gcd(i,j) = 1 \\
+%			0 & \quad \text{当}\; gcd(i,j) \neq 1
+%		\end{cases}
+%	$$
+%	Mr. Hu 现在很好奇整个表格中数的和是多少，你只需要输出这个和模$10086$。
+%
+%    \InputFile
+%
+%	第$1$行$1$个整数$T$表示数据组数。
+%
+%	接下来$T$行，每行两个整数$n \quad m$，表示表格的大小。
+%	
+%    \OutputFile
+%    
+%    对于每个表格，输出其所有元素的和对$10086$取模后的结果。
+%    
+%    \Example    
+%    \begin{example}
+%    	\exmp{ 
+%    		2
+%    		2 2
+%    		3 4
+%    	}{
+%	    	8
+%	    	38
+%		}%
+%   \end{example}
+%   
+%   \Note
+%   
+%   \begin{itemize}
+%	   	\item 对于$30\%$的数据，$1 \leq n, m \leq 100$；
+%	   	\item 对于另外$30\%$的数据，$1 \leq n = m \leq 10^4$；
+%	   	\item 对于$100\%$的数据，$1 \leq n, m \leq 10^7$，$1 \leq T \leq 1000$。
+%   \end{itemize}
+%\end{problem}	
 	
 \begin{problem}{secret}{secret.in}{secret.out}{1 second}{256 MB}
     

@@ -14,12 +14,9 @@ int main() {
 		int ans = 0;
 		for(int i = 1; i <= n; i++) {
 			for(int j = 1; j <= m; j++) {
-				int sub = 0;
-				if(gcd(i,j) == 1) {
-					ans += i + j;
-					ans %= 10086;
-					sub = i + j;
-				}
+				int sub = gcd(i,j);
+				ans += sub;
+				ans %= 10086;
 //				printf("%d ", sub);
 			}
 //			printf("\n");
