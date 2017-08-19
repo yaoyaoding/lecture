@@ -1,0 +1,153 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Summer Training - Computation Geometry \\
+idy002, \today
+}    
+
+\begin{document}
+
+\begin{problem}{land}{land.in}{land.out}{1 second} 
+
+	Mr.Hu在一张纸上画了很多个线段(不包含端点)，这样就会产生一些交点(如果线段重叠部分不只一个点，则忽略这部分)。
+	
+	现在Mr.Hu想在这张纸上画一个凸的区域\footnote{一个凸区域是一个点集，并且其中的任意两个点的连线上的所有点也在属于这个区域}。使得这些交点都在这个区域里面。
+	
+	我们知道可能有多个区域满足上面的条件，现在请你找到一个面积最小的区域，输出最小面积。
+
+    \InputFile
+    
+    第$1$行$1$个整数$n$，表示线段的个数。
+    
+    接下来$n$行，每行四个数：$x_1 \; y_1 \; x_2 \; y_2$，表示一条线段。
+
+    \OutputFile
+    
+    输出$1$行，包含一个数，表示面积。（面积保留两位小数）。
+
+    \Example
+
+    \begin{example}
+        \exmp{
+        	3
+        	-1.0 0 3 0
+        	0 -1 0 3.0
+        	-1 2 2 -1.0
+        }{
+	        0.50
+        }%
+    \end{example}
+
+    \Note
+    
+    \begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n \leq 10$；
+		\item 对于$100\%$的数据，$1 \leq n \leq 1000$, $\mid x_i, y_i \mid <= 1000.00$。
+    \end{itemize}
+
+\end{problem}
+
+
+\begin{problem}{escape}{escape.in}{escape.out}{1 second} 
+	
+	Mr.Hu潜入敌人的秘密基地，窃取了情报后开始逃离。
+	
+	已知敌人的基地是一个简单多边形，但是它非常的庞大和复杂，导致Mr.Hu甚至不知道自己现在是否还在基地内部。
+	
+	现在Mr.Hu把他已经获得的敌人的城堡轮廓给你，以及他途径的一些点的位置，希望你告诉他那个点是否在这个城堡内部。
+	
+	\InputFile
+	
+	第$1$行包含$2$个整数：$n \; q$，表示简单多边形的端点数。
+	
+	接下来$n$行，每行$2$个数，表示点的坐标，按顺时针或逆时针给出。
+	
+	接下来$q$行，每行$2$个数，表示询问点的坐标。
+	
+	\OutputFile
+	
+	对于每个询问，输出$1$行，如果那个点在基地内\footnote{在边界上也在内部}，输出\verb|YES|，否则输出\verb|NO|。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			3 3
+			0 0
+			1 0
+			0.0 1
+			0.5 0.5
+			0.5 0.2
+			1 1.0
+		}{
+			YES
+			YES
+			NO
+		}%
+	\end{example}
+	
+	\Note
+	
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n, q \leq 10$；
+		\item 对于$100\%$的数据，$1 \leq n, q \leq 5000$, 所有坐标绝对值不超过$1000$ 。
+	\end{itemize}
+
+\end{problem}
+
+\begin{problem}{island}{island.in}{island.out}{1 second} 
+	
+	Mr.Hu到了某个小岛，这个小岛的海岸线组成了一个凸多边形，Mr.Hu觉得离海水最远的地方最舒适，所以他希望你帮忙求出，他最远能离海水多远？（离海水的距离就是离最近的海水的距离）。
+	
+	\InputFile
+	
+	第$1$行包含$1$个整数$n$，表示多边形的点数。
+	
+	接下来$n$行，每行$2$个数，表示一个点（按逆时针给出）。
+	
+	\OutputFile
+	
+	一个数，表示最远的距离（保留两位小数）。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			4
+			0 0
+			1 0
+			1 1
+			0 1.0
+		}{
+			0.5
+
+	}%
+	\end{example}
+
+	\Note
+	
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n \leq 10$。
+		\item 对于$100\%$的数据，$1 \leq n \leq 100$，所有坐标绝对值不超过$1000$。
+	\end{itemize}
+
+\end{problem}
+
+
+
+\end{document}

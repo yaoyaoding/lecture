@@ -34,11 +34,11 @@ for (n,m) in cases :
     cout += "%d %d\n" % (nn, mm)
     e = []
     for i in range(mm) :
-        u = randint(1,n)
-        v = randint(1,n)
+        u = randint(1,nn)
+        v = randint(1,nn)
         while u == v or (u,v) in e or (v,u) in e :
-            u = randint(1,n)
-            v = randint(1,n)
+            u = randint(1,nn)
+            v = randint(1,nn)
         e.append((u,v))
         e.append((v,u))
         cout += "%d %d\n" % (u, v)
