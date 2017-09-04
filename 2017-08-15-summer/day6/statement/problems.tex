@@ -1,0 +1,181 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Summer Training \\
+idy002, \today
+}    
+
+\begin{document}
+
+\begin{problem}{fight}{fight.in}{fight.out}{1 second} 
+
+    Mr.Hu来到了一个国家。
+    
+    这个国家正在招兵，现在有$n$个人准备参加考核。每个人都有三个属性：$a$、$d$和$h$，分别表示其攻击力、防御力和身高。
+    
+    这个国家有$m$个将军，每个人对于能力的看重不同，有的人觉得攻击力越高越好，有的则觉得防御力更为重要。具体来说，第$i$个将军会对攻击力和防御力的看重程度分别为$p$和$q$，那么他认为一个攻击力和防御力分别为$a$和$d$的人的战斗力是
+    $$
+	    f = pa + qd
+    $$
+    每个将军还有一个战斗力要求$r$，只有他认为一个士兵的战斗力大于等于$r$时，他才会招收该士兵。
+    
+    现在，国家元首想问你，如果第$i$位将军负责招收士兵，那么不被招收的人的身高和是多大？
+    
+    \InputFile
+
+	第$1$行包含两个整数：$n \; m$，表示参加考核的士兵数和将军人数。
+	
+	接下来$n$行，每行三个整数：$a \; d \; h$。
+	
+	接下来$m$行，每行三个整数：$p \; q \; r$。
+ 
+    \OutputFile
+
+	输出$m$行，每行一个整数，表示身高和。
+  
+    \Example
+
+    \begin{example}
+        \exmp{
+		     3 3
+		     1 2 5
+		     3 1 4
+		     2 2 1
+		     2 1 6
+		     1 3 5
+		     1 3 7
+        }{
+			 5
+			 0
+			 4
+        }%
+    \end{example}
+
+    \Note
+    
+    \begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n, m \leq 5000$。
+		\item 对于$100\%$的数据，$1 \leq n, m \leq 50000$，$150 \leq h \leq 200$，$0 \leq a, d, p, q, r \leq 10^9$。
+    \end{itemize}
+
+\end{problem}
+
+\begin{problem}{surround}{surround.in}{surround.out}{1 second} 
+	
+	Mr.Hu现在在指挥一场战争！
+	
+	现在我们有$n$个部队在战场上，敌军有$m$个部队在战场上，每个部队所在的位置都可以用一个二维坐标来表示（我方部队有可能正在和敌方部队交战，所以坐标有可能重合）。
+	
+	现在我们急需抽调出一批部队到另一战场上去，但Mr.Hu又不想放弃歼灭敌人的机会，所以，他想留下最少的部队，使得这些部队能够将敌军所有部队包围（即我方部队所组成的凸包包含敌军所有部队，在边界上也算包围）。
+	
+	作为Mr.Hu的参谋长，你需要为Mr.Hu计算出最小需要留下的部队数量。
+	
+	\InputFile
+	
+	第$1$行两个整数：$n \; m$，分别表示我方部队数和敌军部队数。
+	
+	接下来$n$行，每行两个数：$x \; y$，表示我方部队的位置。
+	
+	接下来$m$行，每行两个数：$x \; y$，表示敌方部队的位置。
+	
+	\OutputFile
+	
+	输出一行，包含一个整数，表示最小需要留下的部队数，如果我方无论如何都不能全歼敌军，那么输出-1。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			10 10
+			0.1 0.2
+			0.2 0.3
+			0.3 0.4
+			0.4 0.5
+			0.5 0.1
+			0.6 0.2
+			0.7 0.3
+			0.8 0.1 
+			0.9 0.1 
+			1 0 
+			0.1 0.2 
+			0.2 0.3 
+			0.3 0.4 
+			0.4 0.5 
+			0.5 0.1 
+			0.6 0.2 
+			0.7 0.3
+			0.8 0.1 
+			0.9 0.1
+			1 0 
+		}{
+			5
+		}%
+\end{example}
+
+\Note
+
+\begin{itemize}
+	\item 对于$30\%$的数据，$1 \leq n, m \leq 12$.
+	\item 对于$100\%$的数据，$1 \leq n, m \leq 500$，$0.0 \leq x, y \leq 1.0$
+\end{itemize}
+
+\end{problem}
+
+\begin{problem}{count}{count.in}{count.out}{1 second} 
+	
+	Mr.Hu觉得大家很久没有数数了，所以决定让大家练习一下数数。
+	
+	现在Mr.Hu给出一个简单无向加权图（且无重边，无自环），你不满足于求这个图的一个最小生成树，也不满足于统计这个图的生成树个数，于是，你决定数一数最小生成树的个数。
+	
+	\InputFile
+	
+	第$1$行两个整数：$n \; m$，表示图的点数和边数。
+	
+	接下来$m$行，每行三个整数：$a \; b \; c$，表示$a$与$b$之间有一条边权为$c$的边。
+	
+	\OutputFile
+	
+	输出$1$行，表示最小生成树的个数模$31011$.
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			4 6
+			1 2 1
+			1 3 1
+			1 4 1
+			2 3 2
+			2 4 1
+			3 4 1
+		}{
+			8
+		}%
+	\end{example}
+	
+	\Note
+	
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n, m \leq 12$。
+		\item 对于$100\%$的数据，$1 \leq n \leq 100$，$1 \leq m \leq 1000$，$1 \leq c \leq 10^6$，保证同一个边权最多出现$10$次。
+	\end{itemize}
+
+\end{problem}
+
+
+\end{document}

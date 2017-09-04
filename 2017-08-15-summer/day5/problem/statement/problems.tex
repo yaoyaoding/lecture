@@ -1,0 +1,185 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Summer Training \\
+idy002, \today
+}    
+
+\begin{document}
+
+\begin{problem}{near}{near.in}{near.out}{1 second} 
+
+	 Mr.Hu最近去摘果子，这个果园里面有$n$棵果树，在不同的位置，但有些果子成熟了，有些则没有，Mr.Hu一共去了$m$次果园，每次去他都会被告知，某个简单多边形区域内的果子是成熟的(边界上也算成熟)，可以去采摘，Mr.Hu只会去离他最近的两棵果树摘果子，现在Mr.Hu想考考你，希望你能够帮他把计算出他某次去果园时，如果他在某个给定的位置，它会去哪两棵树摘果子。
+ 
+    \InputFile
+    
+    第$1$行，一个整数$T$，表示数据组数，
+	
+	每组数据第$1$行，一个整数$n$，表示果树的数量。
+	
+	接下来$n$行，每行两个整数:$x \; y$，表示第$i$棵果树的位置。
+	
+	接下来$1$行，一个整数$m$，表示Mr.Hu去果园的次数。
+	
+	接下来$m$个部分。
+	
+	每个部分的第$1$行表示本次去，成熟的果子所在的简单多边形的点数$B$。
+	
+	接下来$B$行，每行两个整数：$x \; y$，表示点的坐标（按顺时针或逆时针给出）。
+	
+	接下来$1$行，一个整数$q$想问你的问题个数。
+	
+	接下来$q$行，每行两个整数：$x \; y$，表示询问的点的位置。
+
+    \OutputFile
+
+	对每组数据，输出包含$m$个部分，每个部分包含其对应的$q$行，每行两个整数：$a \; b$，表示最近的两个点的标号（按距离为第一关键字，标号为第二关键字，从小到大排序）。
+ 
+    \Example
+
+    \begin{example}
+        \exmp{
+        	1
+        	8
+        	3 3
+        	2 15
+        	7 15
+        	5 4
+        	13 9
+        	11 10
+        	2 8
+        	10 4
+        	2
+        	4
+        	1 1
+        	1 16
+        	16 16
+        	14 1
+        	2
+        	5 5
+        	7 6
+        	4
+        	3 15
+        	16 15
+        	13 11
+        	15 7
+        	3
+        	9 9
+        	4 13
+        	15 9
+         }{
+	         4 1
+	         4 8
+	         6 5
+	         3 6
+	         5 6
+        }%
+    \end{example}
+
+    \Note
+    
+    \begin{itemize}
+		\item 对于$10\%$的数据，$1 \leq n \leq 1000$，$1 \leq q \leq 100$，给出的区域包含所有果树。
+		\item 对于$30\%$的数据，$1 \leq n \leq 1000$，$1 \leq q \leq 100$，给出的区域是一个凸包。
+		\item 对于$50\%$的数据，$1 \leq n \leq 1000$，$1 \leq q \leq 100$。
+		\item 对于$100\%$的数据，$1 \leq n \leq 10000$，$1 \leq q \leq 3000$，$1 \leq m \leq 10$， $1 \leq B \leq 20$，$-10^7 \leq x, y \leq 10^7$， $\sum n \leq 20000$，保证区域至少包含两棵果树。
+    \end{itemize}
+
+\end{problem}
+
+\begin{problem}{fish}{fish.in}{fish.out}{1 second} 
+	
+	Mr.Hu 最近在和小伙伴们捕鱼，他们一共有四个人，一共有$n$个可供站立的位置，现在Mr.Hu想知道怎样安排人的站立，使得他们围成的区域的面积最大，因为这样才能捕到最多的鱼（两个人可以在同一个点）。
+	
+	\InputFile
+	
+	第$1$行，一个整数$n$，表示点的个数。
+	
+	接下来$n$行，每行$2$个数：$x \; y$，表示点的坐标。
+	
+	\OutputFile
+	
+	输出一行，包含一个数，表示面积的最大值，保留三位小数。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			5	
+			0 0	
+			1 0	
+			1 1	
+			0 1		
+			0.5 0.5
+		}{
+			1.000
+	}%
+\end{example}
+
+\Note
+
+\begin{itemize}
+	\item 对于$30\%$的数据，$1 \leq n \leq 50$。
+	\item 对于$50\%$的数据，$1 \leq n \leq 200$。
+	\item 对于$100\%$的数据，$1 \leq n \leq 2000$,所有数绝对值不超过$1000$。
+\end{itemize}
+
+\end{problem}
+
+\begin{problem}{area}{area.in}{area.out}{1 second} 
+	
+	Mr.Hu最近有些无聊，就在纸上画了$n$个开口向上的抛物线，并且这些抛物线与$x$轴至多有一个交点。通过这些函数，我们可以构造一个新的函数：
+	$$
+		g(x) = \min_{i = 1}^{n}f_i(x)
+	$$
+	
+	现在，Mr.Hu想问你在$x \in [L,R]$这个范围内，$g(x)$与$x$轴围成的面积是多少。
+	
+	\InputFile
+	
+	第$1$行，一个整数$n \; q$，表示抛物线条数，和询问次数。
+	
+	接下来$n$行，每行$3$个数：$a \; b \; c$，表示$f_i(x) = ax^2 + bx + c$。
+	
+	接下来$q$行，每行两个数：$L \; R$，表示一次询问。
+	
+	\OutputFile
+	
+	输出一行，包含一个数，表示面积，保留三位小数。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			2
+		}{
+			1.000
+		}%
+\end{example}
+
+\Note
+
+\begin{itemize}
+	\item 对于$30\%$的数据，$n = 1$。
+	\item 对于$50\%$的数据，$n = 2$。
+	\item 对于$100\%$的数据，$1 \leq n \leq 50$,$1 \leq q \leq 10$, $L \leq R$， 其他所有数的绝对值不超过$50$。
+\end{itemize}
+
+\end{problem}
+
+\end{document}
