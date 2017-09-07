@@ -1,0 +1,71 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Number Theory Special Training \\
+idy002, \today
+}    
+
+\begin{document}
+
+\begin{problem}{gcount}{gcount.in}{gcount.out}{1 second}{256}
+	
+	这是一个多雨的时代。
+	
+	Darrell所在的国家有$N$个城镇，并且有$N-1$条输水管道连接它们，使得任意两个城镇都可以通过一系列的输水管道连接起来。
+	
+	如果城镇$u$爆发了洪水，洪水会向四周蔓延（通过输水管道），但由于不知道水蔓延的速度，也不知道水会蔓延多久，从而导致不清楚洪水过后，城镇的受灾情况（即有哪些城镇受到影响，只要洪水流到该城市该城市就会受影响）。
+	
+	现在，国家的城市防洪委员会想要知道，如果城市$u$爆发洪水，有多少种不同的受灾情况，以便书写救灾预案。你需要回答$u$在$[1,N]$内的答案。但答案可能过大，你只需要将它对$10^{9}+7$取模。
+	
+	\InputFile
+	
+	第$1$行，有$1$个整数：$N$，表示城镇数。
+	
+	接下来$N-1$行，每行$2$个整数：$u \; v$，表示$u$和$v$之间有输水管道连接。
+
+	\OutputFile
+	
+	输出$1$行，包含$N$个数，第$i$个数表示如果城市$i$遭遇洪水，则受影响的情况可能有多少种。（取模后输出）
+
+	\Example
+	
+	\begin{example}
+		\exmp{
+			4
+			1 2
+			2 3
+			2 4
+		}{
+		    5 8 5 5
+		}%
+\end{example}
+
+\Note
+
+	样例中，$1$号城市发洪水后，可能的受灾情况为：$[1], [1,2], [1,2,3], [1,2,4], [1,2,3,4]$。
+	
+	
+		
+	\begin{itemize}
+		\item a
+	\end{itemize}
+\end{problem}
+
+\end{document}

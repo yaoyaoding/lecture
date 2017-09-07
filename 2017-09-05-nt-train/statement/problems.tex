@@ -1,0 +1,332 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Summer Training \\
+idy002, \today
+}    
+
+\begin{document}
+
+\begin{problem}{pay}{pay.in}{pay.out}{1 second}{256 MB}
+
+	Mr.Hu 开了个饭店，来了两位客人：Alice和Bob，他们吃完饭要结账时，发现他们需要支付c元钱，但是Alice只有面值为a的钱，Bob只有面值为b的钱（他们每个人的钱的和都大于c,即可以认为他们有无数张对应面值的钱）。现在，Mr.Hu想知道，他们可能刚好支付完饭钱吗？如果可能，那么有多少种方式？你还需要计算出他们所有可能的支付方式的支付的钱的张数的和。
+
+    \InputFile
+
+    第$1$行包含$1$个整数：$T \; opt$，其中$T$表示数据组数,$opt$为数据类型。
+
+	接下来$T$行，每行$3$个整数：$a \; b\; c$。
+
+    \OutputFile
+    
+    对于每组数据：
+    \begin{itemize}
+    	\item 如果$opt = 1$，输出一行，包含一个整数：$A$，其中$A$表示刚好支付的方案数。
+    	\item 如果$opt = 2$，输出一行，包含两个整数：$A \; B$，其中$A$表示刚好支付的方案数，$B$表示所有可能支付方式的张数和。
+    \end{itemize}
+    
+    \Example
+
+    \begin{example}
+        \exmp{
+        	2 2
+        	3 4 21
+        	2 4 12
+        }{
+			2 13 
+			4 14
+        }%
+    \end{example}
+	
+	样例解释：
+	
+	对于$2 \; 4 \; 21$，一共有两种可能的支付方式，分别是：$(3,3), (7,0)$\footnote{其中$(x,y)$表示Alice支付$x$张面值为a的钱，Bob支付$y$张面值为b的钱}，所以$A$为$2$，$B$为$3 + 3 + 7 + 0 = 13$。
+	
+	对于$2 \; 4 \; 12$，一共有四种可能的支付方式，分别是：$(6,0),(4,1),(2,2),(0,3)$，所以$A$为$4$，$B$为$6 + 0 + 4 + 1 + 2 + 2 + 0 + 3 = 14$。
+	
+    \Note
+    
+    \begin{itemize}
+		\item 对于$20\%$的数据，$0 \leq a, b, c \leq 10000$；
+		\item 对于另外$40\%$的数据，$0 \leq a, b, c \leq 10^9$，其中$opt = 1$；
+		\item 对于另外$40\%$的数据，$0 \leq a, b, c \leq 10^9$，其中$opt = 2$；
+		\item 对于$100\%$的数据，$1 \leq T \leq 1000$，$1 \leq opt \leq 2$。
+    \end{itemize}
+
+\end{problem}
+
+\begin{problem}{sumcomb}{sumcomb.in}{sumcomb.out}{1 second}{256 MB}
+	
+	Mr.Hu被传送到了一个无限大的表格上，现在这个表格的第$i$行第$j$列的值是$a_{i,j}$（$0 \leq i, j$）：
+	$$
+		a_{i,j} = 
+		\begin{cases}
+			1 & j = 0 \text{或} i = j \\
+			a_{i-1,j} + a_{i-1,j-1} & 0 < j < i \\
+			0 & j > i
+		\end{cases}
+	$$
+	
+	现在，Mr.Hu站在$(n,m)$这个位置，他想知道，他向上或向左上方45度望去，看到的数的和是多少。
+	
+	从$(n,m)$向上望去，他会看到$(n,m),(n-1,m),(n-2,m),\cdots,(0,m)$这些位置。
+	
+	从$(n,m)$向左上方45度望去，他会看到$(n,m),(n-1,m-1),\cdots$，直到某一维的下标变为0.
+	
+	这个数可能很大，你只需将答案对$10^9 + 7$取模即可。
+	
+	\InputFile
+	
+	第$1$行一个整数：$T$，表示数据组数。
+	
+	接下来$T$行，每行格式为：$dir \; n \; m$，其中$dir$为$1$表示向上看，$2$表示向左上方看，$(n,m)$为Mr.Hu现在的位置。
+	
+	\OutputFile
+	
+	对于每组数据，输出一行表示答案。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			2
+			1 3 2
+			2 3 2
+		}{
+			4
+			6
+		}%
+	\end{example}
+	
+	表格左上角长成这样（行列都是0 base的）：
+	$$
+		1 \; 0 \; 0 \; 0
+	$$
+	$$
+		1 \; 1 \; 0 \; 0
+	$$
+	$$
+		1 \; 2 \; 1 \; 0
+	$$
+	$$
+		1 \; 3 \; 3 \; 1
+	$$
+	这样从$(3,2)$向上看，会看到：$3 \; 1 \; 0 \; 0$，和为$4$。
+	
+	向左上角看，会看到：$3 \; 2 \; 1$，和为$6$。
+	
+	\Note
+
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n, m \leq 5000$；
+		\item 对于$100\%$的数据，$1 \leq n, m \leq 10^6$，$1 \leq T \leq 5000$。
+	\end{itemize}
+
+\end{problem}
+
+\begin{problem}{ocount}{ocount.in}{ocount.out}{1 second}{256 MB}	
+	
+	Mr.Hu觉得在学习过程中，需要举一反三，做一题要理解透，然后遇到相似的问题时能类似地转化。所以想了一道和以前类似的题目，相信聪明如你，肯定能轻而易举地解决。
+	
+	Mr.Hu会给你$n$个非负整数，然后从中选$k$个出来，然后把这$k$个数按位或起来，Mr.Hu想知道有多少种选法，使得或起来的结果为$r$。
+	
+	\InputFile
+	
+	第$1$行一个整数$T$，表示测试组数。
+	
+	接下来$T$组数据，对于每组数据：
+	
+	第$1$行两个整数$n \; r$。
+	
+	接下来$1$行包含$n$个非负整数：$a_1 \; a_2 \; \dots \; a_n$。
+	
+	\OutputFile
+	
+	对于每组数据，输出一行，包含一个整数，即方案数，因为结果可能很大，只需要对$10^9 + 7$取模即可。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			2
+			4 3
+			1 2 3 4 
+			4 1
+			1 2 3 4
+		}{
+			5
+			1
+		}%
+	\end{example}
+	
+	对于第一组数据，一共有$5$种选法：$(1,2),(3),(1,3),(2,3),(1,2,3)$。
+	
+	对于第二组数据，一共有$1$种选法：$(1)$。
+	
+	\Note
+	
+	\begin{itemize}
+		\item 对于$10\%$的数据，$1 \leq n \leq 10$，$0 \leq a_i < 2^{10}$；
+		\item 对于$30\%$的数据，$1 \leq n \leq 100$，$0 \leq a_i < 2^{10}$；
+		\item 对于$50\%$的数据，$1 \leq n \leq 10^5$，$0 \leq a_i < 2^{15}$；
+		\item 对于$100\%$的数据，$1 \leq n \leq 10^5$，$0 \leq a_i < 2^{20}$，$1 \leq k \leq n$，$1 \leq T \leq 10$。
+	\end{itemize}
+	
+\end{problem}
+
+
+\begin{problem}{facsum}{facsum.in}{facsum.out}{1 second}{256 MB}	
+	
+	Mr.Hu最近偶得一函数：
+	
+	$$
+		f(n) = \big (\sum_{d \mid n} \varphi(d) \big )^k \big (\sum_{d \mid n} \sigma(d)\mu(\frac{n}{d})\frac{n}{d} \big)
+	$$
+	
+	又：
+	
+	$$
+		F(n) = \sum_{i = 1}^{n} f(i)
+	$$
+	
+	Mr.Hu希望你计算$F(n) \quad mod \; 10^9 + 7$的值。
+	
+	\InputFile
+	
+	第一行包含两个整数：$n \; k$。
+	
+	\OutputFile
+	
+	输出一行包含一个数，表示答案。
+
+	\Example
+	
+	\begin{example}
+		\exmp{
+			2 2
+		}{
+			13
+		}%
+	\end{example}
+	
+	样例解释：$f(1) = 1 \quad f(2) = 12$，故$F(2) = f(1) + f(2) = 13$。
+	
+	\Note
+	
+	\begin{itemize}
+		\item 对于$20\%$的数据，$1 \leq n \leq 5000$。
+		\item 对于$50\%$的数据，$1 \leq n \leq 10^5$。
+		\item 对于$100\%$的数据，$1 \leq n \leq 10^7$，$1 \leq k \leq 20$。
+	\end{itemize}
+
+\end{problem}
+
+\begin{problem}{group}{group.in}{group.out}{1 second}{256 MB}	
+	
+	Mr.Hu最近在研究等比数列，即形如：
+	$$
+		a, a^1, a^2, a^3, \dots, a^n, \dots
+	$$
+	现在，Mr.Hu想知道，对于给定的非负整数$a$，上面这个无穷数列在摸$mod$意义下有多少项是本质不同的。(保证$gcd(a,mod) = 1$)。
+	
+	\InputFile
+	
+	第$1$行一个整数：$T$，表示数据组数。
+	
+	接下来$T$行，每行两个整数：$a \; mod$。
+	
+	\OutputFile
+	
+	对于每组数据，输出一行，包含一个整数，表示模意义下本质不同的数有多少个。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			2
+			1 3
+			2 5
+		}{
+			1
+			4
+		}%
+	\end{example}
+
+	对于第一组数据，数列是：$1, 1, 1, \dots, 1, \dots$
+	
+	对于第二组数据，数列（取模以后）是：$2, 4, 3, 1, 2, 4, 3, 1, \dots$，总共有$4$个本质不同的数。
+	
+	\Note
+
+	\begin{itemize}
+		\item 对于$30\%$的数据，$0 \leq a \leq 10^3$，$1 \leq mod \leq 10^3$；
+		\item 对于$100\%$的数据，$0 \leq a \leq 2 \times 10^9$，$1 \leq mod \leq 2 \times 10^9$，且保证$gcd(a,mod) = 1$，$1 \leq T \leq 1000$。
+	\end{itemize}
+
+\end{problem}
+
+\begin{problem}{ccount}{ccount.in}{ccount.out}{1 second}{256 MB}	
+	
+	Mr.Hu最近在学习组合数，他觉得这些数非常美丽。
+	
+	于是，他写下了这样一个数列：
+	
+	$$
+		\binom{l}{n}, \binom{l+1}{n}, \binom{l+2}{n}, \dots, \binom{r-1}{n}, \binom{r}{n}
+	$$
+	
+	Mr.Hu想知道，这些数里面，有多少个数写成十进制的形式后，最后一位为$0$。
+	
+	\InputFile
+	
+	第$1$行一个整数：$T$，表示数据组数。
+	
+	接下来$T$行，每行三个整数：$l \; r \; n$。
+	
+	\OutputFile
+	
+	对于每组数据，输出一行，包含一个整数，表示答案。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			2
+			1 3 4
+			2 4 5
+		}{
+			0
+			2
+		}%
+	\end{example}
+	
+	对于第一组数据，数列是：$4 \; 6 \; 4$，没有以$0$结尾的数，故答案为$0$。
+	
+	对于第二组数据，数列是：$5 \; 10 \; 10 \; 5$，有$2$个数以$0$结尾，故答案为$2$。
+	
+	\Note
+	
+	\begin{itemize}
+		\item 对于$20\%$的数据，$1 \leq n \leq 5000$。
+		\item 对于$40\%$的数据，$1 \leq n \leq 10^9$，$1 \leq r - l + 1 \leq 1000$。
+		\item 对于$100\%$的数据，$1 \leq n \leq 10^18$，$0 \leq l \leq r \leq n$，$1 \leq T \leq 100$。
+	\end{itemize}
+
+\end{problem}
+
+\end{document}
