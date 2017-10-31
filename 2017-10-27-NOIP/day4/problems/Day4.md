@@ -5,7 +5,7 @@
 |  kill   |  kill.in   |  kill.out   | 1 second | 256 MB |
 | beauty  | beauty.in  | beauty.out  | 1 second | 256 MB |
 | reverse | reverse.in | reverse.out | 1 second | 256 MB |
-| weight  | weight.in  | weight.out  | 1 second | 256 MB |
+| weight  | weight.in  | weight.out  | 2 second | 256 MB |
 
 *注：评测时需要开启-O2编译选项。*
 
@@ -35,7 +35,7 @@
 
 输入数据：
 
-> 2 4 50
+> 2 4 5
 >
 > 2 10
 >
@@ -100,7 +100,7 @@ $$
 
 样例输入：
 
-> 7 2
+> 7 2 0
 >
 > 1 5 6 2
 >
@@ -185,6 +185,10 @@ $$
 样例输出：
 
 > 10
+>
+> 1
+>
+> 9952
 
 #### 数据范围
 
@@ -232,7 +236,7 @@ $$
 
 输入数据：
 
-> 4 4
+> 4 4 0
 >
 > 1 2 1
 >
@@ -248,7 +252,7 @@ $$
 
 输入数据：
 
-> 4 3
+> 4 3 0
 >
 > 1 2 2
 >

@@ -150,7 +150,8 @@ void modify( int u, int v, int val ) {
 }
 
 int main() {
-	scanf("%d%d", &n, &m);
+	int a;
+	scanf("%d%d%d", &n, &m, &a);
 	for (int i = 1; i <= m; i++) {
 		int u, v, w;
 		scanf("%d%d%d", &u, &v, &w);
