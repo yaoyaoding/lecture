@@ -2,10 +2,10 @@
 
 from random import *
 
-n = 100
-m = randint(n,n+2)
-q = 3
-s = q * 3
+n = 10
+m = randint(n-1,n+n)
+q = 1
+s = randint(n-2,n+2)
 
 
 cout = ""
@@ -19,10 +19,10 @@ for i in range(m - n + 1) :
     cout += "%d %d\n" % (u, v)
 K = s / q
 for i in range(q) :
-    k = randint(K-1,K)
+    k = randint(1,K)
     cout += "%d " % k
     for t in range(k) :
-        u = randint(n/4*3,n)
+        u = randint(1,n)
         cout += "%d " % u
     cout += "\n"
 
