@@ -1,0 +1,169 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+2018清北冬令营模拟测试
+}    
+
+\begin{document}
+
+\begin{problem}{chess}{chess.in}{chess.out}{2 second}{512}
+	
+	一个$n$行$m$列的棋盘，我们准备在上面放一些马，并且让马与马之间不能相互攻击(马的攻击方式是中国象棋中马的攻击方式，并且不考虑“蹩马脚”的情况，即任何两匹马，如果他们在某一维位置相差1，在另一维相差2，则他们可以相互攻击)，但是有些位置坏掉了，所以不能放马，你需要计算最多能放多少匹马，并且给出一种马的放法。
+	
+	\InputFile
+	
+	第一行四个整数$n, m,q,type$，表示棋盘大小及坏掉的位置的个数，$type$表示数据类型；
+
+	接下来$q$行，每行两个整数$x,y$表示$x$行$y$列的位置坏掉了。
+	
+	\OutputFile
+	
+	第一行包含一个整数$ans$，表示最多还可以放多少匹马；
+	
+	如果$type = 0$，则不再输出信息。
+	
+	如果$type = 1$，则还需要输出$ans$行，每行两个整数$x,y$ ，表示一匹马的位置。
+	
+	\Example
+	
+	样例数据1
+	
+	\begin{example}
+		\exmp{
+			2 2 2 1
+			1 1
+			2 2
+		}{
+			2
+			1 2
+			2 1
+		}%
+	\end{example}
+	
+	样例数据2见sample/chess2.in和sample/chess2.out。
+	
+	\Note
+	
+	注：本题有Special Judge。
+	
+	\begin{itemize}
+		\item 对于$30\%$的数据，$1 \leq n, m \leq 10$, $q = 0$, $type = 1$;
+		\item 对于另外$30\%$的数据，$1 \leq n, m \leq 30$, $type = 0$;
+		\item 对于$100\%$的数据，$1 \leq n, m \leq 30$, $0 \leq q \leq nm$, $0 \leq type \leq 1$, $1 \leq x \leq n$, $1 \leq y \leq m$。
+	\end{itemize}
+\end{problem}
+
+\begin{problem}{tower}{tower.in}{tower.out}{2 second}{512}
+	
+	现在有一条 $[1, l]$ 的数轴,要在上面造 $n$ 座塔,每座塔的坐标要两两不
+	同,且为整点。塔有编号,且每座塔都有高度,对于编号为 $i$ 座塔,其高
+	度为 $i$。对于一座塔,需要满足它与前面以及后面的塔的距离大于等于自身
+	高度(不存在则没有限制)。问有多少建造方案。答案对 $m$ 取模。塔不要
+	求按编号为顺序建造。
+	
+	\InputFile
+	
+	一行三个整数 $n, l, m$。
+	
+	\OutputFile
+	
+	输出一个整数,代表答案对 $m$ 取模的值。
+	
+	\Example
+	
+	样例数据1
+	
+	\begin{example}
+		\exmp{
+			3 9 17
+		}{
+			15
+	}%	
+	\end{example}
+	
+	样例数据2见sample/tower2.in和sample/tower2.out。
+
+	\Note
+	\begin{itemize}
+		\item 对于 $10\%$ 的数据,满足:$n \leq  10, l \leq 25$
+		\item 对于 $30\%$ 的数据,满足:$n \leq 20$
+		\item 对于 $50\%$ 的数据,满足:$n \leq 50$
+		\item 对于 $70\%$ 的数据,满足:$l \leq 10^5$
+		\item 对于 $100\%$ 的数据,满足:$n \leq 100, 1 \leq l \leq 10^9 , 1 \leq m \leq 10^9$
+	\end{itemize}
+
+\end{problem}
+
+\begin{problem}{stream}{stream.in}{stream.out}{2 second}{512}
+	
+	点点太无聊了,所以想学习学习最大流来打发无聊的时光,所谓最大流,
+	是指图上的每一条边都有一定的流量限制,每个顶点处要满足流量的收支平
+	衡,最终目标是最大化进入汇点的流量。接下来我们就来考虑一个动态改变源
+	汇点的最大流问题。
+	给出一个无向简单(无重边自环)连通图,由 $N$ 个点 $M$ 条边构成,保证
+	每个点最多属于一个简单环。共有 $Q$ 次操作,每次或询问给定源汇点的最大
+	流、或修改一条边的流量。现在请你按顺序回答每次询问的答案。
+	
+	\InputFile
+	
+	第一行两个整数 $N,M$;
+	
+	接下来 $M$ 行,每行三个整数 $u,v,f$,表示 $u,v$ 间有一条流量限制为 $f$
+	的边;
+	
+	接下来一行一个整数$Q$;
+	
+	再之后 $Q$ 行每行三个整数,若形如“0 S T”则表示求源点为 S、汇点为
+	T 时的最大流;若形如“1 x f”,则表示把编号为 x(按读入顺序从 1 开
+	始)的边流量限制改为 f。
+	
+	\OutputFile
+	
+	对于每组询问,输出一行一个整数,表示最大流。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			4 3
+			1 2 2
+			2 3 1
+			2 4 3
+			3
+			0 1 3
+			1 1 5
+			0 1 4
+		}{
+			1
+			3
+	   }%
+	\end{example}
+
+	\Note
+	\begin{itemize}
+		\item 有$10\%$的数据,$N,M,Q \leq 1000,M=N-1$;
+		\item 有$20\%$的数据,$N,M,Q \leq 100000,M=N-1$;
+		\item 另$10\%$的数据,$N,M,Q \leq 100$;
+		\item 另$30\%$的数据(含前一类),$N,M,Q \leq 1000$;
+		\item 对于$100\%$的数据,$N \leq 100000,M,Q \leq 200000$,边的流量限制始终为不超过$10^9$的正整数,保证询问中S和T不等。
+	\end{itemize}
+\end{problem}
+
+\end{document}

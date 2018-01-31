@@ -1,0 +1,215 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+2018清北冬令营模拟测试
+}    
+
+\begin{document}
+
+\begin{problem}{energy}{energy.in}{energy.out}{2 second}{512}
+	
+	有一块神秘的大陆,大陆的地图可以被视为 $n \times m$ 的格点图。其中每一个格
+	点里都有一块矿石,每个矿石都有自己的能量值,第 $i$ 行第 $j$ 列的矿石能量被
+	记为 $p_{i,j}$ 。
+	
+	现在有一个能量收集装置,它可以被放置在任何一个格点上,周围矿石的能
+	量都会有一部分被吸收。具体来说如果位于坐标 $(i, j)$ 矿石与收集装置的欧式距
+	离 $d$ 小于 $r$ 的话,那么这块矿石将会有 $\frac{p_{i,j}}{1+d}$
+	的能量被采集。
+	
+	请问最多能采集多少的矿石能量?
+	
+	\InputFile
+	
+	第一行为两个整数 $n, m$,和一个浮点数 $r$。
+	接下来 $n$ 行,每行 $m$ 个浮点数,第 $i$ 行第 $j$ 个数表示 $p_{i,j}$ 。
+
+	\OutputFile
+	
+	一行一个浮点数,表示答案,四舍五入到三位小数部分。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			5 5 1.5
+			4 3 2 9 1
+			3 4 3 2 8
+			9 4 3 2 1
+			2 3 0 1 2
+			6 3 4 3 1
+		}{
+			17.956
+		}%
+	\end{example}
+
+	\Note
+	
+	\begin{itemize}
+		\item 对于 $30\%$ 的数据,$1 \leq n \leq 100$, $1 \leq m \leq 100$, $0 \leq r \leq 50$。
+		\item 对于 $100\%$ 的数据,$1 \leq n \leq 500$, $1 \leq m \leq 500$, $0 \leq r \leq 300$。
+	\end{itemize}
+
+\end{problem}
+
+\begin{problem}{ernd}{ernd.in}{ernd.out}{2 second}{512}
+	对于一棵有根树,定义一个点 $u$ 的 k-子树为 $u$ 的子树中距离 $u$ 不超
+	过 $k$ 的部分。注意,假如 $u$ 的子树中不存在距离 $u$ 为 $k$ 的点,则 $u$ 的 k-
+	子树是不存在的。
+	
+	定义两棵子树是相同的,当且仅当不考虑点的标号时,他们的形态是
+	相同的(儿子的顺序也需要考虑)。给定一棵 $n$ 个点,点的标号在 $[1, n]$,
+	以 $1$ 为根的有根树。
+	
+	问最大的 $k$,使得存在两个点 $u\neq v$,满足 $u$ 的 k-子
+	树与 $v$ 的 k-子树相同。
+
+	\InputFile
+	
+	第一行输入一个正整数 $n$。
+	
+	接下来读入 $n$ 个部分,第 $i$ 个部分描述点 $i$ 的儿子,且以顺序给出。
+	
+	每个部分首先读入一个整数 $x$,代表儿子个数。接下来 $x$ 个整数,代
+	表从左到右儿子的标号。
+	
+	\OutputFile
+	
+	输出一个整数 $k$,代表最大的合法的 $k$。
+	
+	\Example
+	
+	样例数据1
+	
+	\begin{example}
+		\exmp{
+			8 
+			1
+			2
+			2
+			3 4
+			0
+			1
+			5
+			2
+			6 7
+			0
+			1
+			8
+			0
+		}{
+			3
+		}%
+	\end{example}
+	
+	样例数据2见sample/ernd2.in和sample/ernd2.out。
+	
+	\Note
+	
+	\begin{itemize}
+		\item 对于 $20\%$ 的数据,满足:$n \leq 100$
+		\item 对于 $40\%$ 的数据,满足:$n \leq 2000$
+		\item 对于 $60\%$ 的数据,满足:$n \leq 30000$
+		\item 对于 $100\%$ 的数据,满足:$n \leq 100000$,保证给出的树是合法的。
+	\end{itemize}
+	
+\end{problem}
+
+
+\begin{problem}{gene}{gene.in}{gene.out}{5 second}{512}
+	
+	给定一个长度为 $n$ 的字符串 $s$,有 $q$ 组询问,每个询问给定 $l, r$,询问
+	$s[l..r]$ 中有多少本质不同的回文子串。
+	
+	\InputFile
+	
+	第一行一个整数 $type$,若 $type = 0$,表示这个数据没有进行加密,若
+	$type = 1$,表示这个数据进行了加密。
+	
+	第二行两个整数 $n, q$。
+	
+	第三行一个字符串 $s$。
+	
+	接下来 $q$ 行,每行两个整数 $l' , r'$ 。记 $lastans$ 为上一次询问的答案,
+	若这是第一次询问,$lastans = 0$,则这次询问的 $l, r$ 为$l = l'\oplus (type \times
+	lastans)$, $r = r'\oplus (type \times lastans)$。
+	
+	\OutputFile
+	
+	输出共 $q$ 行,代表每个询问的答案。
+	
+	\Example
+	
+	样例数据1
+	
+	\begin{example}
+		\exmp{
+			1 
+			8 4 
+			abbabbba 
+			1 7 
+			3 2
+			6 10
+			1 0
+		}{
+			7
+			2
+			5
+			2
+		}%
+	\end{example}
+	
+	样例数据2见sample/gene2.in和sample/gene2.out。
+	
+	\Note
+	
+	% Please add the following required packages to your document preamble:
+	% \usepackage{multirow}
+	\begin{table}[!htbp]
+		\begin{tabular}{|c|c|c|}
+			\hline
+			数据点 & n不超过                     & type                \\ \hline
+			1   & 100                      & \multirow{4}{*}{1}  \\ \cline{1-2}
+			2   & \multirow{3}{*}{1000}    &                     \\ \cline{1-1}
+			3   &                          &                     \\ \cline{1-1}
+			4   &                          &                     \\ \hline
+			5   & \multirow{3}{*}{30000}   & \multirow{6}{*}{0}  \\ \cline{1-1}
+			6   &                          &                     \\ \cline{1-1}
+			7   &                          &                     \\ \cline{1-2}
+			8   & \multirow{13}{*}{100000} &                     \\ \cline{1-1}
+			9   &                          &                     \\ \cline{1-1}
+			10  &                          &                     \\ \cline{1-1} \cline{3-3} 
+			11  &                          & \multirow{10}{*}{1} \\ \cline{1-1}
+			12  &                          &                     \\ \cline{1-1}
+			13  &                          &                     \\ \cline{1-1}
+			14  &                          &                     \\ \cline{1-1}
+			15  &                          &                     \\ \cline{1-1}
+			16  &                          &                     \\ \cline{1-1}
+			17  &                          &                     \\ \cline{1-1}
+			18  &                          &                     \\ \cline{1-1}
+			19  &                          &                     \\ \cline{1-1}
+			20  &                          &                     \\ \hline
+		\end{tabular}
+	\end{table}
+
+\end{problem}
+
+
+\end{document}
