@@ -26,13 +26,12 @@ for (n,q) in cases :
     print "make %d..." % cur
     for i in xrange(q) :
         opt = choice( ['query', 'modify'] )
+        ln = n / 2 + randint(0, n / 2)
+        l = randint(1, n - ln + 1)
+        r = l + ln - 1
         if opt[0] == 'q' :
-            l = randint(1,n)
-            r = randint(l,n)
             cout += "%s %d %d\n" % (opt, l, r)
         else :
-            l = randint(1,n)
-            r = randint(l,n)
             d = randint(-100,100)
             cout += "%s %d %d %d\n" % (opt, l, r, d)
     f = file( prob + str(cur) + ".in", "w" )

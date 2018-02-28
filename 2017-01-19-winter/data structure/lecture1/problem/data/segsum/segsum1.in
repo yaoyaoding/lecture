@@ -1,102 +1,102 @@
 100 100
--81 -41 -65 64 94 84 -84 41 -77 -96 -4 0 16 -7 -82 85 13 1 -38 37 -2 -63 74 5 35 74 -97 -17 21 -3 81 55 93 9 -38 4 -50 55 20 -93 84 -40 -93 -15 95 37 69 90 6 2 90 -47 53 -41 42 4 -92 -72 32 38 -37 -77 65 -94 -88 -47 -2 -38 -55 82 86 42 83 -36 92 -47 25 70 -75 -44 -64 -92 52 -87 70 10 72 -45 -54 -51 93 45 78 25 56 -60 -87 -95 -66 -100 
-modify 13 39 -82
-modify 77 78 -36
-query 13 37
-modify 7 73 0
-modify 50 97 45
-query 57 88
-query 70 89
-query 5 88
-modify 86 93 -57
-modify 67 94 -55
-modify 96 98 64
-query 65 76
-modify 19 49 -43
-query 75 75
-modify 3 81 -18
-modify 36 49 14
-modify 90 98 23
-modify 80 92 97
-modify 79 98 -21
-query 8 16
-modify 8 45 36
-query 74 93
-query 11 97
-query 93 99
-query 76 91
-query 33 82
-modify 73 91 43
-query 23 52
-modify 19 87 62
-query 89 89
-query 62 93
-modify 55 61 2
-query 83 85
-query 50 99
-query 2 72
-modify 51 91 -74
-query 71 92
-query 84 92
-modify 26 37 -58
-modify 74 84 36
-query 58 91
-modify 49 68 14
-modify 12 41 78
-query 23 29
-query 18 46
-query 53 96
-modify 58 87 29
-query 59 62
-modify 2 47 -46
-query 41 94
-query 55 78
-modify 37 38 -6
-query 75 80
-query 53 84
-modify 16 61 94
-query 55 74
-query 13 52
-modify 20 93 89
-modify 44 61 1
-query 88 99
-query 1 28
-modify 89 96 -86
-query 14 79
-modify 66 96 42
-query 37 96
-query 3 98
-modify 89 100 -67
-modify 72 94 42
-modify 42 60 44
-modify 86 87 -67
-modify 55 57 44
-modify 95 97 2
-query 32 46
-modify 44 89 -52
-modify 42 71 -12
-query 46 95
-modify 71 75 15
-modify 83 88 -56
-modify 37 61 79
-modify 26 95 61
-query 88 91
-query 58 77
-query 16 62
-modify 65 78 7
-query 33 68
-modify 86 94 43
-query 12 37
-query 18 88
-modify 41 73 16
-modify 89 91 85
-modify 4 31 34
-modify 61 98 -78
-modify 40 57 64
+-69 -53 87 -99 47 98 94 -62 -47 57 -70 91 46 39 37 -27 -33 -64 -57 -67 -45 -10 42 -37 10 -64 -81 -28 -98 -79 52 -84 -46 14 -47 25 74 -71 -93 10 51 67 46 -45 100 -30 -83 46 -26 20 64 58 -78 -29 20 98 45 -50 49 89 0 42 -36 -64 62 61 75 15 27 57 -100 -24 10 -91 -6 -72 -15 88 -5 -76 -74 38 -21 53 -81 48 80 27 7 -33 -60 32 -73 3 -74 62 12 10 -76 -44 
+query 5 90
+query 20 89
+modify 23 97 34
+modify 31 85 95
+modify 1 100 -29
+query 33 90
+query 4 55
+modify 33 93 21
+modify 5 92 24
+modify 5 57 51
+query 20 94
+query 2 90
+query 6 94
+query 10 87
+query 2 100
+query 2 93
+query 34 94
+query 7 83
+query 12 72
+query 14 93
+query 9 79
+modify 2 63 63
+modify 5 97 24
+query 2 68
+query 4 97
+modify 21 98 47
+query 1 100
+query 37 95
+modify 3 95 -37
+query 25 78
+modify 7 99 -89
+modify 9 91 54
+query 6 89
+query 1 100
+modify 16 99 -65
+modify 5 73 74
+modify 18 77 -8
+query 41 92
+query 2 52
+modify 10 96 68
+query 12 70
+modify 33 100 -71
+modify 21 80 44
 query 24 84
-query 87 99
-query 82 94
-modify 64 91 41
-query 86 88
-modify 12 80 27
-query 7 17
+modify 1 89 90
+query 2 94
+query 22 96
+query 14 95
+query 2 96
+query 7 74
+modify 13 69 -45
+modify 16 97 -77
+modify 22 74 18
+modify 12 100 -81
+modify 6 98 69
+query 3 89
+query 2 96
+query 11 90
+query 35 85
+query 1 53
+query 13 64
+modify 5 67 -27
+modify 3 98 -3
+modify 5 87 -61
+query 11 80
+query 19 95
+query 1 100
+query 23 83
+query 16 82
+query 15 87
+query 8 94
+modify 12 75 -51
+query 15 99
+modify 4 100 -88
+modify 10 91 4
+modify 15 96 33
+modify 3 98 -14
+query 27 92
+query 1 94
+query 18 78
+query 5 98
+modify 19 100 -21
+query 38 100
+modify 21 93 12
+query 10 86
+modify 41 100 76
+query 29 88
+modify 7 97 41
+query 19 72
+modify 3 57 -14
+query 34 100
+modify 1 83 -46
+modify 30 98 46
+query 2 77
+modify 4 72 -86
+query 9 84
+modify 8 86 -73
+query 7 96
+modify 4 81 84
+modify 2 95 -17

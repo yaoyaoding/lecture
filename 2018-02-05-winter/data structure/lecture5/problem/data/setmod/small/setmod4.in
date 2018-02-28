@@ -1,0 +1,12 @@
+10 10
+2 1 8 5 1 4 10 8 1 10
+modify 2 2 5
+change 7 10 8
+modify 10 10 10
+modify 9 10 6
+modify 4 6 9
+query 2 9
+modify 7 8 4
+modify 2 3 10
+modify 7 10 10
+modify 8 10 3

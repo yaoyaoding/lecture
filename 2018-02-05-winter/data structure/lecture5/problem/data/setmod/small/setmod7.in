@@ -1,0 +1,14 @@
+12 12
+4 8 4 2 11 10 1 7 8 11 10 4
+query 3 6
+modify 1 5 11
+change 4 12 4
+query 4 11
+change 11 11 4
+change 7 7 1
+change 11 11 4
+modify 7 9 5
+change 11 11 5
+query 5 12
+modify 1 2 7
+change 5 7 7

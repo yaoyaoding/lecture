@@ -94,11 +94,11 @@ idy002, \today
             4 3 
             1 2 3 4
             query 1 3
-            modify 3 -3
+            modify 3 3 -3
             query 1 4
         }{
-            6
-            7
+            1 3 6
+            0 4 7
         }%
     \end{example}
 
@@ -106,7 +106,7 @@ idy002, \today
     
     \begin{itemize}
     	\item 对于$30\%$的数据，$1 \leq N, Q \leq 10^3$；
-        \item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$。
+        \item 对于$100\%$的数据，$1 \leq N, Q \leq 10^5$，任何时候，序列中的每个数都在int范围内。
     \end{itemize}
 
 \end{problem}
@@ -148,7 +148,7 @@ idy002, \today
         \item 对于$30\%$的数据，$1 \leq N, M, Q \leq 500$；
         \item 对于另外$30\%$的数据，$N = 1, \; 1 \leq M \leq 500, \; 1 \leq Q \leq 10^5$；
         \item 对于另外$40\%$的数据，$1 \leq N, M \leq 500, \; 1 \leq Q \leq 10^5$；
-        \item 对于$100\%$的数据，$1 \leq x1 \leq x2 \leq N, \; 1 \leq y1 \leq y2 \leq M$。
+        \item 对于$100\%$的数据，$1 \leq x1 \leq x2 \leq N, \; 1 \leq y1 \leq y2 \leq M$，矩阵每个数都在int范围内。
     \end{itemize}
 
 \end{problem}

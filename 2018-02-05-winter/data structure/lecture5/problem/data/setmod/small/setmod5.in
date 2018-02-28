@@ -1,0 +1,12 @@
+10 10
+9 2 3 2 5 10 2 5 7 9
+change 9 10 7
+query 4 7
+query 5 7
+change 5 8 7
+query 8 10
+query 10 10
+change 7 8 9
+change 1 1 2
+query 1 6
+change 2 8 6

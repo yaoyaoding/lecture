@@ -1,0 +1,16 @@
+14 14
+11 2 10 1 13 7 2 14 14 9 11 2 14 14
+query 1 10
+change 13 13 9
+change 10 10 14
+query 9 11
+query 9 9
+change 1 7 13
+modify 10 11 9
+change 9 14 2
+change 13 13 3
+modify 4 13 14
+query 9 14
+query 12 14
+change 11 12 14
+change 12 13 13

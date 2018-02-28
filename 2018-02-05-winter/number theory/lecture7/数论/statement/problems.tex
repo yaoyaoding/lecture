@@ -1,0 +1,141 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[english]{babel}
+\usepackage{olymp}
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+\usepackage{colortbl}
+%\usepackage{expdlist}
+%\usepackage{mfpic}
+%\usepackage{comment}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xeCJK}
+
+%\setCJKmainfont[BoldFont={Hei}]
+%{SimSun}
+%\setCJKmonofont{FangSong}
+
+\renewcommand{\contestname}{
+No.7 High School Number Theory Special Training \\
+idy002, \today
+}    
+
+\begin{document}
+
+\begin{problem}{eqution}{eqution.in}{eqution.out}{1 second}{256}
+	
+	Mr. Ding又来让你帮忙解方程了。
+	
+	方程是这样的：
+	$$
+		x_1 + x_1 + x_3 + \dots + x_n = m \quad ( x_i \geq 0 \;  \forall 1 \leq i \leq n  )
+	$$
+	Mr. Ding希望你求出这个$n$元一次方程的整数解有多少个，因为解的个数有可能变得很大，所以Mr. Ding只需要你输出解的个数取模于$mod$。
+	
+	\InputFile
+	
+	第$1$行，包含一个整数：$T$，表示询问个数
+	
+	接下来$T$行，每行包含三个整数：$n \; m \; mod$
+	
+	\OutputFile
+	
+	输出$T$行，每行输出解的个数模对应$ mod $
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			1
+			2 3 13
+		}{
+			4 
+		}%
+\end{example}
+
+\Note
+	样例中，解分别是：$(3,0) , (2,1)  , (1,2) , (0,3)$	
+	\begin{itemize}
+		\item 对于$30\%$的数据，$ 1 \leq n, m \leq 6 $，$ mod = 10^8 + 7 $，$ T = 1 $
+		\item 对于$70\%$的数据，$ 1 \leq n, m \leq 10^3 $，$ n + m \leq mod \leq 10^8 + 7 $，$mod$是一个素数，$ 1 \leq T \leq 100 $
+		\item 对于余下$30\%$的数据，$ 1 \leq n, m \leq 10^3$，$ n + m \leq p, q \leq 10^4 $，$mod = pq$，$p, q$是素数，$ 1 \leq T \leq 10^3 $
+	\end{itemize}
+\end{problem}
+
+\begin{problem}{power}{power.in}{power.out}{1 second}{256}
+	
+	Mr. Ding打算考一道比较显然的题目，低头一想，就有了这道题。
+	
+	Mr. Ding需要你计算：
+	
+	$$
+	3^n \; mod \; 10^9 + 8 
+	$$
+	
+	是不是很简单啊。\verb|^_^|
+	
+	\InputFile
+	
+	只有一行，一个数$n$。
+	
+	\OutputFile
+	
+	输出结果。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			3
+		}{
+			27
+	}%
+\end{example}
+
+\Note
+\begin{itemize}
+	\item 对于$10\%$的数据，$1 \leq n \leq 10^6$
+	\item 对于$30\%$的数据，$1 \leq n \leq 10^{18}$
+	\item 对于$70\%$的数据，$1 \leq n \leq 10^{1000}$
+	\item 对于$100\%$的数据，$1 \leq n \leq 10^{100000}$
+\end{itemize}
+
+\end{problem}
+
+\begin{problem}{comb}{comb.in}{comb.out}{1 second}{256}
+	
+	一天，Mr. Ding对组合数产生了兴趣，他想要知道满足下面条件的数$i$有多少个：
+	$$
+		gcd(\binom{n}{i},p) = p \quad ( 0 \leq i \leq n )
+	$$
+	其中$p$是素数。
+	
+	\InputFile
+	
+	第$1$行，$2$个整数：$n \; p$。
+	
+	\OutputFile
+	
+	输出所求。
+	
+	\Example
+	
+	\begin{example}
+		\exmp{
+			5  2
+		}{
+			2
+	   }%
+\end{example}
+
+\Note
+	样例中，一共有$6$个组合数：$1, 5, 10, 10, 5, 1$，其中和$2$公约数为$2$的数有两个$10$，故输出$2$。
+	\begin{itemize}
+		\item 对于$30\%$的数据，满足$ 1 \leq n, p \leq 10^3 $
+		\item 对于$100\%$的数据，满足$ 1 \leq n, p \leq 10^{18} $
+	\end{itemize}
+\end{problem}
+
+\end{document}

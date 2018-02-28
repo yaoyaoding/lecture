@@ -1,0 +1,13 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{组合数、排列数}{3}{0}{1}
+\beamer@sectionintoc {2}{容斥原理、鸽巢原理}{4}{0}{2}
+\beamer@sectionintoc {3}{快速幂}{5}{0}{3}
+\beamer@sectionintoc {4}{最大公约数}{6}{0}{4}
+\beamer@sectionintoc {5}{扩展欧几里得}{7}{0}{5}
+\beamer@sectionintoc {6}{二元一次不定方程}{8}{0}{6}
+\beamer@sectionintoc {7}{同余}{9}{0}{7}
+\beamer@sectionintoc {8}{欧拉函数}{10}{0}{8}
+\beamer@sectionintoc {9}{求逆元}{12}{0}{9}
+\beamer@sectionintoc {10}{中国剩余定理}{13}{0}{10}
+\beamer@sectionintoc {11}{Lucas定理}{14}{0}{11}
+\beamer@sectionintoc {12}{筛素数}{15}{0}{12}

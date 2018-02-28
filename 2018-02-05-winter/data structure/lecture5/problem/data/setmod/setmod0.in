@@ -1,0 +1,32 @@
+30 30
+24 26 8 19 4 8 26 25 19 19 28 17 6 12 13 25 16 6 25 28 2 2 13 30 21 16 20 19 23 5
+modify 6 28 26
+modify 29 29 26
+change 5 21 13
+modify 30 30 12
+modify 1 1 16
+modify 10 14 8
+change 29 29 27
+modify 29 30 7
+change 25 27 2
+modify 14 19 13
+modify 27 29 25
+query 21 24
+change 24 29 22
+modify 10 30 5
+modify 14 21 20
+change 12 12 30
+change 22 24 6
+query 6 8
+modify 9 11 16
+modify 19 23 22
+change 25 28 26
+change 10 30 13
+change 10 19 10
+query 18 30
+modify 26 29 21
+change 19 24 16
+query 25 28
+modify 9 11 7
+modify 24 28 13
+modify 4 30 9
